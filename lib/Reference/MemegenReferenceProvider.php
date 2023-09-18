@@ -102,9 +102,9 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	}
 
 	private function parseMemeUrl(string $url): ?array {
-		preg_match('/^(?:https?:\/\/)?(?:www\.)?api\.memegen\.link\/images\/([^\?]+\/)+([^\/\?\.]+)+\.(gif|jpg|png)/i', $url, $matches);
+		preg_match('/^(?:https?:\/\/)?(?:www\.)?api\.memegen\.link\/images\/([^\/\?]+)\/([^\?\.]+)+\.(gif|jpg|png)/i', $url, $matches);
 		if (count($matches) > 3) {
-			return ['captions' => explode('/',$matches[1]), 'meme_id' => $matches[2]];
+			return ['captions' => explode('/',$matches[2]), 'meme_id' => $matches[1]];
 		}
 
 		preg_match('/^(?:https?:\/\/)?(?:www\.)?api\.memegen\.link\/images\/([^\/\?]+)\.(gif|jpg|png)$/i', $url, $matches);

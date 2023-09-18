@@ -4,13 +4,9 @@
 			{{ t('integration_giphy', 'Giphy GIF picker') }}
 		</h2>
 		<div class="input-wrapper">
-			<NcTextField v-for="n in parseInt(8)"
-				:key="n"
-				:ref="'memegen-caption' + String(n)"
-				:label="'Caption ' + String(n)"
-				@update:value="(event) => onCapChange(n,event)">
-				<MagnifyIcon :size="16" />
-			</NcTextField>
+			<GetCapsDialog
+				ref="caps-dialog"
+				@submit="onSubmit" />
 		</div>
 		<div class="input-wrapper">
 			<NcTextField
@@ -86,6 +82,7 @@ import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 import PickerResult from '../components/PickerResult.vue'
+import GetCapsDialog from '../components/GetCapsDialog.vue'
 
 import axios from '@nextcloud/axios'
 import { generateUrl, imagePath } from '@nextcloud/router'
@@ -103,6 +100,7 @@ export default {
 
 	components: {
 		PickerResult,
+		GetCapsDialog,
 		NcLoadingIcon,
 		InfiniteLoading,
 		NcEmptyContent,
@@ -163,7 +161,11 @@ export default {
 		onSelect(gif) {
 			this.cancelSearchRequests()
 			this.selectedGifId = gif.memeId
+			this.$refs['caps-dialog'].showCapsDialog(gif)
 			// this.$emit('submit', gif.resourceUrl)
+		},
+		onSubmit(extUrl) {
+			this.$emit('submit', extUrl)
 		},
 		onInput() {
 			delay(() => {
@@ -173,9 +175,6 @@ export default {
 		onClear() {
 			this.searchQuery = ''
 			this.updateSearch()
-		},
-		onCapChange(n, event) {
-			this.searchQuery = event.target.value
 		},
 		updateSearch() {
 			if (this.$refs.results?.scrollTop) {

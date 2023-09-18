@@ -79232,7 +79232,7 @@ const webNamespaces = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "memegen-" + chunkId + ".js?v=" + {"vendors-node_modules_nextcloud_vue_dist_Components_NcLoadingIcon_js-node_modules_css-loader_d-d1a295":"66acb4049ac588d5f820","reference-lazy":"8174466d27cddad2d320","vendors-node_modules_nextcloud_vue_dist_Components_NcEmptyContent_js-node_modules_nextcloud_v-a74dde":"aeff98258beff99ced7f","reference-picker-lazy":"b283ffb2a105120c8f6a"}[chunkId] + "";
+/******/ 			return "memegen-" + chunkId + ".js?v=" + {"vendors-node_modules_nextcloud_vue_dist_Components_NcLoadingIcon_js-node_modules_css-loader_d-d1a295":"66acb4049ac588d5f820","reference-lazy":"8174466d27cddad2d320","vendors-node_modules_nextcloud_vue_dist_Components_NcButton_js-node_modules_nextcloud_vue_dis-8a36ea":"664116a12884ec1be86d","reference-picker-lazy":"475791ac93d14cff353c"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -79470,7 +79470,7 @@ __webpack_require__.p = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_1__.linkTo
   });
   const {
     default: MemeCustomPickerElement
-  } = await Promise.all(/*! import() | reference-picker-lazy */[__webpack_require__.e("vendors-node_modules_nextcloud_vue_dist_Components_NcLoadingIcon_js-node_modules_css-loader_d-d1a295"), __webpack_require__.e("vendors-node_modules_nextcloud_vue_dist_Components_NcEmptyContent_js-node_modules_nextcloud_v-a74dde"), __webpack_require__.e("reference-picker-lazy")]).then(__webpack_require__.bind(__webpack_require__, /*! ./views/MemeCustomPickerElement.vue */ "./src/views/MemeCustomPickerElement.vue"));
+  } = await Promise.all(/*! import() | reference-picker-lazy */[__webpack_require__.e("vendors-node_modules_nextcloud_vue_dist_Components_NcLoadingIcon_js-node_modules_css-loader_d-d1a295"), __webpack_require__.e("vendors-node_modules_nextcloud_vue_dist_Components_NcButton_js-node_modules_nextcloud_vue_dis-8a36ea"), __webpack_require__.e("reference-picker-lazy")]).then(__webpack_require__.bind(__webpack_require__, /*! ./views/MemeCustomPickerElement.vue */ "./src/views/MemeCustomPickerElement.vue"));
   const Element = Vue.extend(MemeCustomPickerElement);
   const vueElement = new Element({
     propsData: {
