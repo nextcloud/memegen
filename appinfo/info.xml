@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <!--
+    SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com>
+    SPDX-License-Identifier: CC0-1.0
+    -->
+    <id>memegen</id>
+    <name>Meme Gen</name>
+    <summary>A meme SmartPicker</summary>
+    <description><![CDATA[A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality.]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="sami.finnila@nextcloud.com" >Sami Finnilä</author>
+    <namespace>Memegen</namespace>
+    <category>integration</category>
+    <bugs>https://github.com/nextcloud/memegen</bugs>
+    <dependencies>
+        <nextcloud min-version="27" max-version="28"/>
+    </dependencies>
+        
+</info>
