@@ -86,7 +86,7 @@ export default {
 					caption = '_'
 				}
 
-				caption = encodeURIComponent('captions[' + String(i) + ']') + '=' + encodeURIComponent(caption)
+				caption = encodeURIComponent('captions[' + String(i) + ']') + '=' + encodeURIComponent(this.encodeCaption(caption))
 
 				if (i < this.captions.length - 1) {
 					caption += '&'
@@ -104,12 +104,41 @@ export default {
 			let externalUrl = 'https://api.memegen.link/images/' + this.meme.memeId
 
 			for (let i = 0; i < this.captions.length; i++) {
-				externalUrl += '/' + encodeURIComponent(this.captions[i])
+				externalUrl += '/' + this.encodeCaption(this.captions[i])
 			}
 			externalUrl += '.jpg'
 
 			this.$emit('submit', externalUrl)
 			// this.showDialog = false
+		},
+		encodeCaption(caption) {
+			// Replace space () with underscore (_)
+			caption = caption.replace(/ /g, '_')
+
+			// Replace underscore (_) with 2 underscores (__)
+			caption = caption.replace(/_/g, '__')
+
+			// Replace dash (-) with 2 dashes (--)
+			caption = caption.replace(/-/g, '--')
+
+			// Replace newline character with tilde + N (~n)
+			caption = caption.replace(/\n/g, '~n')
+
+			// Replace reserved URL characters in using following escape patterns
+			caption = caption.replace(/\?/g, '~q')
+			caption = caption.replace(/&/g, '~a')
+			caption = caption.replace(/%/g, '~p')
+			caption = caption.replace(/#/g, '~h')
+			caption = caption.replace(/\//g, '~s')
+			caption = caption.replace(/\\/g, '~b')
+			caption = caption.replace(/</g, '~l')
+			caption = caption.replace(/>/g, '~g')
+
+			// Replace double quote (") with 2 single quotes ('')
+			caption = caption.replace(/"/g, "''")
+
+			return caption
+
 		},
 	}
 }

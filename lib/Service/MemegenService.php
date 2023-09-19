@@ -263,12 +263,6 @@ class MemegenService {
 
         return $result;
 
-
-		#$result = $this->request('v1/search', $params, 'GET', true);
-		#if (!isset($result['error'])) {
-		#	$result['photos'] = array_slice($result['photos'], $leftPadding, $limit);
-		#}
-		#return $result;
 	}
 
 	
@@ -318,68 +312,4 @@ class MemegenService {
 		}
 		return null;
 	}
-
-	/**
-	 * Make an authenticated HTTP request to Memegen API
-	 * @param string $endPoint The path to reach in api.github.com
-	 * @param array $params Query parameters (key/val pairs)
-	 * @param string $method HTTP query method
-	 * @param int $timeout
-	 * @return array decoded request result or error
-	 */
-	/*public function request(string $endPoint, array $params = [], string $method = 'GET', int $timeout = 30): array {
-		try {
-			$url = 'https://api.memegen.link/' . $endPoint;
-			$options = [
-				'timeout' => $timeout,
-				'headers' => [
-					'User-Agent' => 'Nextcloud Memegen integration',
-				],
-			];
-			
-			if (count($params) > 0) {
-				if ($method === 'GET') {
-					$paramsContent = http_build_query($params);
-					$url .= '?' . $paramsContent;
-				} else {
-					$options['body'] = json_encode($params);
-				}
-			}
-
-			if ($method === 'GET') {
-				$response = $this->client->get($url, $options);
-			} else if ($method === 'POST') {
-				$response = $this->client->post($url, $options);
-			} else if ($method === 'PUT') {
-				$response = $this->client->put($url, $options);
-			} else if ($method === 'DELETE') {
-				$response = $this->client->delete($url, $options);
-			} else {
-				return ['error' => $this->l10n->t('Bad HTTP method')];
-			}
-			$body = $response->getBody();
-			$respCode = $response->getStatusCode();
-
-			if ($respCode >= 400) {
-				return ['error' => $this->l10n->t('Bad credentials')];
-			} else {
-				return json_decode($body, true) ?: [];
-			}
-		} catch (ClientException | ServerException $e) {
-			$responseBody = $e->getResponse()->getBody();
-			$parsedResponseBody = json_decode($responseBody, true);
-			if ($e->getResponse()->getStatusCode() === 404) {
-				$this->logger->debug('Memegen API error : ' . $e->getMessage(), ['response_body' => $responseBody, 'app' => Application::APP_ID]);
-			} else {
-				$this->logger->warning('Memegen API error : ' . $e->getMessage(), ['response_body' => $responseBody, 'app' => Application::APP_ID]);
-			}
-			return [
-				'error' => $e->getMessage(),
-				'body' => $parsedResponseBody,
-			];
-		} catch (Exception | Throwable $e) {
-			$this->logger->warning('Memegen API error : ' . $e->getMessage(), ['app' => Application::APP_ID]);
-			return ['error' => $e->getMessage()];
-		}
-	}*/
 }
