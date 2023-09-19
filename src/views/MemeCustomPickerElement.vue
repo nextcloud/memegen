@@ -45,7 +45,6 @@
 				:key="i + '-' + meme.blankUrl"
 				:meme="meme"
 				:tabindex="0"
-				:class="{selected: meme.memeId === selectedMemeId}"
 				@click="onSelect(meme)" />
 			<InfiniteLoading v-if="memes.length >= LIMIT"
 				@infinite="infiniteHandler">
@@ -302,10 +301,6 @@ export default {
 		.result {
 			&:hover {
 				border: 2px solid var(--color-primary);
-				border-radius: var(--border-radius);
-			}
-			&.selected {
-				border: 4px solid var(--color-primary);
 				border-radius: var(--border-radius);
 			}
 		}

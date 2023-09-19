@@ -585,9 +585,6 @@ var render = function render() {
   }, [_vm._l(_vm.memes, function (meme, i) {
     return _c("PickerResult", {
       key: i + "-" + meme.blankUrl,
-      class: {
-        selected: meme.memeId === _vm.selectedMemeId
-      },
       attrs: {
         meme: meme,
         tabindex: 0
@@ -894,10 +891,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.meme-picker-content[data-v-3aea70fa] 
 }
 .meme-picker-content .results .result[data-v-3aea70fa]:hover {
   border: 2px solid var(--color-primary);
-  border-radius: var(--border-radius);
-}
-.meme-picker-content .results .result.selected[data-v-3aea70fa] {
-  border: 4px solid var(--color-primary);
   border-radius: var(--border-radius);
 }
 .meme-picker-content .results[data-v-3aea70fa] .infinite-status-prompt {
@@ -1331,4 +1324,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=c20494711048b2ee01dc
+//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=14c9e2173564f9bd7e0f
