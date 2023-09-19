@@ -739,8 +739,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.meme-caps-modal[data-v-a7f64802] {
   padding: 20px 0px 20px 0px;
 }
 .meme-caps-dialog .meme-renderer img[data-v-a7f64802] {
-  width: 100%;
   max-height: 640px;
+  max-width: 100%;
   object-fit: cover;
 }
 .meme-caps-dialog .meme-renderer .loading-icon[data-v-a7f64802] {
@@ -1326,4 +1326,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=1e1e47491d4ab44593f2
+//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=b025f1f47518612c4317

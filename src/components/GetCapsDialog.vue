@@ -205,8 +205,8 @@ export default {
 		flex-direction: column;
 		padding: 20px 0px 20px 0px;
 		img {
-			width: 100%;
 			max-height: 640px;
+			max-width: 100%;
 			object-fit: cover;
 		}
 
