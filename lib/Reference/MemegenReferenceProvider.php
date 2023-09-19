@@ -66,6 +66,12 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	}
 
 
+	/**
+	 * Given a referenceText, determine if this provider can resolve it.
+	 * 
+	 * @param string $referenceText
+	 * @return bool
+	 */
 	public function matchReference(string $referenceText): bool {
 		
 		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
@@ -76,6 +82,12 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	}
 
 
+	/**
+	 * Given a referenceText, return a reference object.
+	 * 
+	 * @param string $referenceText
+	 * @return IReference|null
+	 */
 	public function resolveReference(string $referenceText): ?IReference {
 		if ($this->matchReference($referenceText)) {
 			
@@ -101,6 +113,12 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 		return null;
 	}
 
+	/**
+	 * Given a url, parse it and return the meme id and captions. If the link doesn't match the proper format, return null.
+	 * 
+	 * @param string $url
+	 * @return array|null
+	 */
 	private function parseMemeUrl(string $url): ?array {
 		preg_match('/^(?:https?:\/\/)?(?:www\.)?api\.memegen\.link\/images\/([^\/\?]+)\/([^\?\.]+)+\.(gif|jpg|png)/i', $url, $matches);
 		if (count($matches) > 3) {

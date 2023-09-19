@@ -234,6 +234,9 @@ class MemegenService {
 	}
 
 	/**
+     * Search the memeTemplates for matching memes based on the long version of the meme name.
+     * Return an array sorted based on the levenshtein distance (to allow for partial matches).
+     * 
 	 * @param string $query What to search for
 	 * @param int $offset
 	 * @param int $limit
@@ -266,18 +269,29 @@ class MemegenService {
 	}
 
 	
-
+    /**
+     * Return all meme info contained within the memeTemplates array based on the meme name.
+     * 
+     * @param string $memeName
+     * @return array|null
+     */
 	public function getMemeInfo(string $memeName): ?array {
-		#return $this->request('v1/photos/' . $photoId);
-
-        if (!isset($this->memeTemplates[$memeName])) {
+		if (!isset($this->memeTemplates[$memeName])) {
             return null;
         }
 
         return $this->memeTemplates[$memeName];
 	}
 
-	public function getMemeContent(string $memeId, ?array $captions): ?array {
+	/**
+     * Use the memegen service to generate a meme image given a memeId and captions.
+     * Captions must be encoded using the escape characters specified at https://memegen.link/
+     * 
+     * @param string $memeId
+     * @param array|null $captions
+     * @return array|null
+     */
+    public function getMemeContent(string $memeId, ?array $captions): ?array {
         #TODO: Resize images as necessary
 		#$photoInfo = $this->getPhotoInfo($photoId);
 		if (isset($this->memeTemplates[$memeId])) {

@@ -1,7 +1,7 @@
 <template>
-	<div class="gif-picker-content">
+	<div class="meme-picker-content">
 		<h2>
-			{{ t('integration_giphy', 'Giphy GIF picker') }}
+			{{ t('memegen', 'Memegen meme picker') }}
 		</h2>
 		<div class="input-wrapper">
 			<GetCapsDialog
@@ -10,7 +10,7 @@
 		</div>
 		<div class="input-wrapper">
 			<NcTextField
-				ref="giphy-search-input"
+				ref="memegen-search-input"
 				:value.sync="searchQuery"
 				:show-trailing-button="searchQuery !== ''"
 				:label="inputPlaceholder"
@@ -22,16 +22,16 @@
 				<MagnifyIcon :size="16" />
 			</NcTextField>
 		</div>
-		<div v-if="gifs.length === 0"
+		<div v-if="memes.length === 0"
 			class="empty-content-wrapper">
 			<NcEmptyContent v-if="searching"
-				:title="t('integration_giphy', 'Searching...')">
+				:title="t('memegen', 'Searching...')">
 				<template #icon>
 					<NcLoadingIcon />
 				</template>
 			</NcEmptyContent>
 			<NcEmptyContent v-else
-				:title="t('integration_giphy', 'No results')">
+				:title="t('memegen', 'No results')">
 				<template #icon>
 					<img class="empty-content-img"
 						:src="sadGifUrl">
@@ -41,24 +41,24 @@
 		<div v-else
 			ref="results"
 			class="results">
-			<PickerResult v-for="(gif, i) in gifs"
-				:key="i + '-' + gif.blankUrl"
-				:gif="gif"
+			<PickerResult v-for="(meme, i) in memes"
+				:key="i + '-' + meme.blankUrl"
+				:meme="meme"
 				:tabindex="0"
-				:class="{selected: gif.memeId === selectedGifId}"
-				@click="onSelect(gif)" />
-			<InfiniteLoading v-if="gifs.length >= LIMIT"
+				:class="{selected: meme.memeId === selectedMemeId}"
+				@click="onSelect(meme)" />
+			<InfiniteLoading v-if="memes.length >= LIMIT"
 				@infinite="infiniteHandler">
 				<template #no-results>
 					<div class="infinite-end">
 						<img :src="sadGifUrl">
-						{{ t('integration_giphy', 'No results') }}
+						{{ t('memegen', 'No results') }}
 					</div>
 				</template>
 				<template #no-more>
 					<div class="infinite-end">
 						<img :src="sadGifUrl">
-						{{ t('integration_giphy', 'No more GIFs') }}
+						{{ t('memegen', 'No more memes') }}
 					</div>
 				</template>
 			</InfiniteLoading>
@@ -66,7 +66,7 @@
 		<a class="attribution"
 			target="_blank"
 			:title="poweredByTitle"
-			href="https://giphy.com">
+			href="https://memegen.link">
 			<img :src="poweredByImgSrc"
 				:alt="poweredByTitle">
 		</a>
@@ -124,15 +124,15 @@ export default {
 		return {
 			searchQuery: '',
 			searching: false,
-			gifs: [],
-			selectedGifId: null,
-			inputPlaceholder: t('integration_giphy', 'Search GIFs'),
+			memes: [],
+			selectedMemeId: null,
+			inputPlaceholder: t('memegen', 'Search memes'),
 			offset: null,
 			abortController: null,
-			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy.gif'),
-			poweredByTitle: t('integration_giphy', 'Powered by Giphy'),
+			poweredByImgSrc: imagePath('memegen', 'memegen.logo.png'),
+			poweredByTitle: t('memegen', 'Powered by Memegen.link'),
 			LIMIT,
-			sadGifUrl: imagePath('integration_giphy', 'sad.gif'),
+			sadGifUrl: imagePath('memegen', 'sad.gif'),
 		}
 	},
 
@@ -154,15 +154,15 @@ export default {
 	methods: {
 		focusOnInput() {
 			setTimeout(() => {
-				// this.$refs['giphy-search-input']?.focus()
-				this.$refs['giphy-search-input'].$el.getElementsByTagName('input')[0]?.focus()
+				// this.$refs['memegen-search-input']?.focus()
+				this.$refs['memegen-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
 		},
-		onSelect(gif) {
+		onSelect(meme) {
 			this.cancelSearchRequests()
-			this.selectedGifId = gif.memeId
-			this.$refs['caps-dialog'].showCapsDialog(gif)
-			// this.$emit('submit', gif.resourceUrl)
+			this.selectedMemeId = meme.memeId
+			this.$refs['caps-dialog'].showCapsDialog(meme)
+			// this.$emit('submit', meme.resourceUrl)
 		},
 		onSubmit(extUrl) {
 			this.$emit('submit', extUrl)
@@ -181,7 +181,7 @@ export default {
 				this.$refs.results.scrollTop = 0
 			}
 			this.cancelSearchRequests()
-			this.gifs = []
+			this.memes = []
 			this.offset = 0
 			this.search()
 		},
@@ -210,7 +210,7 @@ export default {
 			})
 				.then((response) => {
 					this.offset = response.data.offset
-					this.gifs.push(...response.data.entries)
+					this.memes.push(...response.data.entries)
 					if (state !== null) {
 						if (response.data.entries.length > 0) {
 							state.loaded()
@@ -221,7 +221,7 @@ export default {
 					}
 				})
 				.catch((error) => {
-					console.debug('giphy search request error', error)
+					console.debug('memegen search request error', error)
 					if (state !== null) {
 						state.complete()
 					}
@@ -235,7 +235,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.gif-picker-content {
+.meme-picker-content {
 	width: 100%;
 	display: flex;
 	flex-direction: column;

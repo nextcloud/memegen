@@ -1,15 +1,15 @@
 <template>
-	<div v-tooltip.top="{ content: gif.title }"
+	<div v-tooltip.top="{ content: meme.name }"
 		class="result"
 		@keydown.enter="$emit('click')"
 		@click="$emit('click')">
 		<div v-if="!isLoaded" class="loading-icon">
 			<NcLoadingIcon
 				:size="44"
-				:title="t('integration_giphy', 'Loading GIF')" />
+				:title="t('memegen', 'Loading GIF')" />
 		</div>
 		<img v-show="isLoaded"
-			class="gif-image"
+			class="meme-image"
 			:src="imgUrl"
 			@load="isLoaded = true">
 	</div>
@@ -27,7 +27,7 @@ export default {
 	},
 
 	props: {
-		gif: {
+		meme: {
 			type: Object,
 			required: true,
 		},
@@ -36,7 +36,7 @@ export default {
 	data() {
 		return {
 			isLoaded: false,
-			imgUrl: generateUrl('/apps/memegen/memes/{memeId}', { memeId: this.gif.memeId }),
+			imgUrl: generateUrl('/apps/memegen/memes/{memeId}', { memeId: this.meme.memeId }),
 		}
 	},
 
@@ -68,7 +68,7 @@ export default {
 		height: 100%;
 	}
 
-	.gif-image {
+	.meme-image {
 		height: 100%;
 		width: 100%;
 		object-fit: cover;

@@ -18,7 +18,7 @@ class Application extends App implements IBootstrap {
 	public function __construct(/*array $urlParams = []*/) {
 	parent::__construct(self::APP_ID /*,$urlParams*/);
 	}
-
+	
 	public function register(IRegistrationContext $context): void {
 		$context->registerSearchProvider(MemegenSearchMemesProvider::class);
 		$context->registerReferenceProvider(MemegenReferenceProvider::class);
@@ -28,3 +28,4 @@ class Application extends App implements IBootstrap {
 	public function boot(IBootContext $context): void {
 	}
 }
+

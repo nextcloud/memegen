@@ -28,6 +28,9 @@ class MemegenController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 *
+	 * @param string $memeId
+	 * @param array|null $captions
+	 * @return DataDisplayResponse
 	 */
 	public function getMemeContent(string $memeId, ?array $captions): DataDisplayResponse {
 
@@ -49,6 +52,10 @@ class MemegenController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 *
+	 * @param string|null $term Search term
+	 * @param int|null $offset Offset for cosecutive searches
+	 * @param int|null $limit The index of the last search result to return
+	 * @return DataResponse
 	 */
 	public function search(?string $term = '', ?int $offset = null, ?int $limit = 20): DataResponse {
 

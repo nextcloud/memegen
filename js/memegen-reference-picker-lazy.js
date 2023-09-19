@@ -20,6 +20,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nextcloud_vue_dist_Components_NcLoadingIcon_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_NcLoadingIcon_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _nextcloud_vue_dist_Components_NcButton_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @nextcloud/vue/dist/Components/NcButton.js */ "./node_modules/@nextcloud/vue/dist/Components/NcButton.js");
 /* harmony import */ var _nextcloud_vue_dist_Components_NcButton_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_NcButton_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils.js */ "./src/utils.js");
+
 
 
 
@@ -55,6 +57,12 @@ __webpack_require__.r(__webpack_exports__);
       this.showDialog = false;
     },
     onCapUpdate() {
+      (0,_utils_js__WEBPACK_IMPORTED_MODULE_5__.delay)(() => {
+        this.updateCaps();
+      }, 500)();
+    },
+    updateCaps() {
+      this.isLoaded = false;
       let getParams = '';
       for (let i = 0; i < this.captions.length; i++) {
         let caption = this.captions[i];
@@ -80,9 +88,7 @@ __webpack_require__.r(__webpack_exports__);
       }
       externalUrl += '.jpg';
       this.$emit('submit', externalUrl);
-      // this.showDialog = false
     },
-
     encodeCaption(caption) {
       // Replace space () with underscore (_)
       caption = caption.replace(/ /g, '_');
@@ -136,7 +142,7 @@ __webpack_require__.r(__webpack_exports__);
     NcLoadingIcon: (_nextcloud_vue_dist_Components_NcLoadingIcon_js__WEBPACK_IMPORTED_MODULE_0___default())
   },
   props: {
-    gif: {
+    meme: {
       type: Object,
       required: true
     }
@@ -145,7 +151,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isLoaded: false,
       imgUrl: (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_1__.generateUrl)('/apps/memegen/memes/{memeId}', {
-        memeId: this.gif.memeId
+        memeId: this.meme.memeId
       })
     };
   },
@@ -225,15 +231,15 @@ const LIMIT = 20;
     return {
       searchQuery: '',
       searching: false,
-      gifs: [],
-      selectedGifId: null,
-      inputPlaceholder: t('integration_giphy', 'Search GIFs'),
+      memes: [],
+      selectedMemeId: null,
+      inputPlaceholder: t('memegen', 'Search memes'),
       offset: null,
       abortController: null,
-      poweredByImgSrc: (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_8__.imagePath)('integration_giphy', 'powered-by-giphy.gif'),
-      poweredByTitle: t('integration_giphy', 'Powered by Giphy'),
+      poweredByImgSrc: (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_8__.imagePath)('memegen', 'memegen.logo.png'),
+      poweredByTitle: t('memegen', 'Powered by Memegen.link'),
       LIMIT,
-      sadGifUrl: (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_8__.imagePath)('integration_giphy', 'sad.gif')
+      sadGifUrl: (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_8__.imagePath)('memegen', 'sad.gif')
     };
   },
   computed: {},
@@ -248,15 +254,15 @@ const LIMIT = 20;
   methods: {
     focusOnInput() {
       setTimeout(() => {
-        // this.$refs['giphy-search-input']?.focus()
-        this.$refs['giphy-search-input'].$el.getElementsByTagName('input')[0]?.focus();
+        // this.$refs['memegen-search-input']?.focus()
+        this.$refs['memegen-search-input'].$el.getElementsByTagName('input')[0]?.focus();
       }, 300);
     },
-    onSelect(gif) {
+    onSelect(meme) {
       this.cancelSearchRequests();
-      this.selectedGifId = gif.memeId;
-      this.$refs['caps-dialog'].showCapsDialog(gif);
-      // this.$emit('submit', gif.resourceUrl)
+      this.selectedMemeId = meme.memeId;
+      this.$refs['caps-dialog'].showCapsDialog(meme);
+      // this.$emit('submit', meme.resourceUrl)
     },
 
     onSubmit(extUrl) {
@@ -276,7 +282,7 @@ const LIMIT = 20;
         this.$refs.results.scrollTop = 0;
       }
       this.cancelSearchRequests();
-      this.gifs = [];
+      this.memes = [];
       this.offset = 0;
       this.search();
     },
@@ -303,7 +309,7 @@ const LIMIT = 20;
         signal: this.abortController.signal
       }).then(response => {
         this.offset = response.data.offset;
-        this.gifs.push(...response.data.entries);
+        this.memes.push(...response.data.entries);
         if (state !== null) {
           if (response.data.entries.length > 0) {
             state.loaded();
@@ -313,7 +319,7 @@ const LIMIT = 20;
           }
         }
       }).catch(error => {
-        console.debug('giphy search request error', error);
+        console.debug('memegen search request error', error);
         if (state !== null) {
           state.complete();
         }
@@ -340,15 +346,17 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("NcModal", {
+  return _c("div", {
+    staticClass: "meme-caps-modal"
+  }, [_c("NcModal", {
     attrs: {
-      container: ".gif-picker-content",
+      container: ".meme-picker-content",
       show: _vm.showDialog,
       size: "small",
       name: "Caps dialog",
-      outTransition: true,
-      hasNext: true,
-      hasPrevious: true
+      "out-transition": true,
+      "has-next": true,
+      "has-previous": true
     },
     on: {
       "update:show": function ($event) {
@@ -358,7 +366,7 @@ var render = function render() {
     }
   }, [_vm.meme !== null ? _c("div", {
     staticClass: "meme-caps-dialog"
-  }, [_c("div", {
+  }, [_c("h2", [_vm._v("\n\t\t\t\t" + _vm._s(_vm.t("memegen", "Caption your meme")) + "\n\t\t\t")]), _vm._v(" "), _c("div", {
     staticClass: "dialog-wrapper"
   }, _vm._l(parseInt(_vm.meme.lines), function (n) {
     return _c("div", {
@@ -387,14 +395,14 @@ var render = function render() {
   }, [_c("NcLoadingIcon", {
     attrs: {
       size: 44,
-      title: _vm.t("integration_giphy", "Loading GIF")
+      title: _vm.t("memegen", "Loading meme")
     }
   })], 1) : _vm._e(), _vm._v(" "), _c("img", {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: _vm.isLoaded,
-      expression: "isLoaded"
+      value: _vm.imgUrl !== "",
+      expression: "imgUrl !== ''"
     }],
     staticClass: "meme-image",
     attrs: {
@@ -406,7 +414,7 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "input-wrapper"
+    staticClass: "button-wrapper"
   }, [_c("NcButton", {
     attrs: {
       type: "primary"
@@ -414,7 +422,7 @@ var render = function render() {
     on: {
       click: _vm.onSubmit
     }
-  }, [_vm._v("\n\t\t\t\t\tSubmit\n\t\t\t\t")])], 1)]) : _vm._e()])], 1);
+  }, [_vm._v("\n\t\t\t\t\tUse this meme\n\t\t\t\t")])], 1)]) : _vm._e()])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -441,9 +449,9 @@ var render = function render() {
       name: "tooltip",
       rawName: "v-tooltip.top",
       value: {
-        content: _vm.gif.title
+        content: _vm.meme.name
       },
-      expression: "{ content: gif.title }",
+      expression: "{ content: meme.name }",
       modifiers: {
         top: true
       }
@@ -463,7 +471,7 @@ var render = function render() {
   }, [_c("NcLoadingIcon", {
     attrs: {
       size: 44,
-      title: _vm.t("integration_giphy", "Loading GIF")
+      title: _vm.t("memegen", "Loading GIF")
     }
   })], 1) : _vm._e(), _vm._v(" "), _c("img", {
     directives: [{
@@ -472,7 +480,7 @@ var render = function render() {
       value: _vm.isLoaded,
       expression: "isLoaded"
     }],
-    staticClass: "gif-image",
+    staticClass: "meme-image",
     attrs: {
       src: _vm.imgUrl
     },
@@ -504,8 +512,8 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "gif-picker-content"
-  }, [_c("h2", [_vm._v("\n\t\t" + _vm._s(_vm.t("integration_giphy", "Giphy GIF picker")) + "\n\t")]), _vm._v(" "), _c("div", {
+    staticClass: "meme-picker-content"
+  }, [_c("h2", [_vm._v("\n\t\t" + _vm._s(_vm.t("memegen", "Memegen meme picker")) + "\n\t")]), _vm._v(" "), _c("div", {
     staticClass: "input-wrapper"
   }, [_c("GetCapsDialog", {
     ref: "caps-dialog",
@@ -515,7 +523,7 @@ var render = function render() {
   })], 1), _vm._v(" "), _c("div", {
     staticClass: "input-wrapper"
   }, [_c("NcTextField", {
-    ref: "giphy-search-input",
+    ref: "memegen-search-input",
     attrs: {
       value: _vm.searchQuery,
       "show-trailing-button": _vm.searchQuery !== "",
@@ -542,11 +550,11 @@ var render = function render() {
     attrs: {
       size: 16
     }
-  })], 1)], 1), _vm._v(" "), _vm.gifs.length === 0 ? _c("div", {
+  })], 1)], 1), _vm._v(" "), _vm.memes.length === 0 ? _c("div", {
     staticClass: "empty-content-wrapper"
   }, [_vm.searching ? _c("NcEmptyContent", {
     attrs: {
-      title: _vm.t("integration_giphy", "Searching...")
+      title: _vm.t("memegen", "Searching...")
     },
     scopedSlots: _vm._u([{
       key: "icon",
@@ -557,7 +565,7 @@ var render = function render() {
     }], null, false, 3085876643)
   }) : _c("NcEmptyContent", {
     attrs: {
-      title: _vm.t("integration_giphy", "No results")
+      title: _vm.t("memegen", "No results")
     },
     scopedSlots: _vm._u([{
       key: "icon",
@@ -574,23 +582,23 @@ var render = function render() {
   })], 1) : _c("div", {
     ref: "results",
     staticClass: "results"
-  }, [_vm._l(_vm.gifs, function (gif, i) {
+  }, [_vm._l(_vm.memes, function (meme, i) {
     return _c("PickerResult", {
-      key: i + "-" + gif.blankUrl,
+      key: i + "-" + meme.blankUrl,
       class: {
-        selected: gif.memeId === _vm.selectedGifId
+        selected: meme.memeId === _vm.selectedMemeId
       },
       attrs: {
-        gif: gif,
+        meme: meme,
         tabindex: 0
       },
       on: {
         click: function ($event) {
-          return _vm.onSelect(gif);
+          return _vm.onSelect(meme);
         }
       }
     });
-  }), _vm._v(" "), _vm.gifs.length >= _vm.LIMIT ? _c("InfiniteLoading", {
+  }), _vm._v(" "), _vm.memes.length >= _vm.LIMIT ? _c("InfiniteLoading", {
     on: {
       infinite: _vm.infiniteHandler
     },
@@ -603,7 +611,7 @@ var render = function render() {
           attrs: {
             src: _vm.sadGifUrl
           }
-        }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.t("integration_giphy", "No results")) + "\n\t\t\t\t")])];
+        }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.t("memegen", "No results")) + "\n\t\t\t\t")])];
       },
       proxy: true
     }, {
@@ -615,16 +623,16 @@ var render = function render() {
           attrs: {
             src: _vm.sadGifUrl
           }
-        }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.t("integration_giphy", "No more GIFs")) + "\n\t\t\t\t")])];
+        }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.t("memegen", "No more memes")) + "\n\t\t\t\t")])];
       },
       proxy: true
-    }], null, false, 606175026)
+    }], null, false, 2876782810)
   }) : _vm._e()], 2), _vm._v(" "), _c("a", {
     staticClass: "attribution",
     attrs: {
       target: "_blank",
       title: _vm.poweredByTitle,
-      href: "https://giphy.com"
+      href: "https://memegen.link"
     }
   }, [_c("img", {
     attrs: {
@@ -682,21 +690,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.meme-caps-dialog[data-v-a7f64802] {
+___CSS_LOADER_EXPORT___.push([module.id, `.meme-caps-modal[data-v-a7f64802] {
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0px 0px 12px;
+}
+.meme-caps-dialog[data-v-a7f64802] {
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 16px 0 16px;
-  overflow-y: auto;
-  max-height: 800px;
+  padding: 12px 0px 0px 12px;
+}
+.meme-caps-dialog h2[data-v-a7f64802] {
+  display: flex;
+  align-items: center;
 }
 .meme-caps-dialog .dialog-wrapper[data-v-a7f64802] {
   width: 90%;
   display: grid;
   grid-gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  align-items: center;
 }
 .meme-caps-dialog .dialog-wrapper .input-wrapper[data-v-a7f64802] {
   display: flex;
@@ -716,15 +734,33 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.meme-caps-dialog[data-v-a7f64802] {
   justify-content: center;
   width: 100%;
   max-height: 640px;
+  min-height: 640px;
   object-fit: cover;
   flex-direction: column;
   padding: 20px 0px 20px 0px;
 }
-.meme-caps-dialog .meme-renderer input[data-v-a7f64802] {
-  flex-grow: 1;
+.meme-caps-dialog .meme-renderer img[data-v-a7f64802] {
+  width: 100%;
+  max-height: 640px;
+  object-fit: cover;
 }
-.meme-caps-dialog .meme-renderer .input-loading[data-v-a7f64802] {
-  padding: 0 4px;
+.meme-caps-dialog .meme-renderer .loading-icon[data-v-a7f64802] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.meme-caps-dialog .button-wrapper[data-v-a7f64802] {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  padding: 12px 12px 12px 12px;
 }`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -765,13 +801,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.result[data-v-d09bde0a] {
   width: 100%;
   height: 100%;
 }
-.result .gif-image[data-v-d09bde0a] {
+.result .meme-image[data-v-d09bde0a] {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: var(--border-radius);
 }
-.result .gif-image[data-v-d09bde0a]:hover {
+.result .meme-image[data-v-d09bde0a]:hover {
   object-fit: contain;
 }`, ""]);
 // Exports
@@ -799,7 +835,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.gif-picker-content[data-v-3aea70fa] {
+___CSS_LOADER_EXPORT___.push([module.id, `.meme-picker-content[data-v-3aea70fa] {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -809,11 +845,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.gif-picker-content[data-v-3aea70fa] {
   overflow-y: auto;
   max-height: 800px;
 }
-.gif-picker-content h2[data-v-3aea70fa] {
+.meme-picker-content h2[data-v-3aea70fa] {
   display: flex;
   align-items: center;
 }
-.gif-picker-content .attribution[data-v-3aea70fa] {
+.meme-picker-content .attribution[data-v-3aea70fa] {
   position: absolute;
   bottom: 4px;
   left: 16px;
@@ -821,29 +857,29 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.gif-picker-content[data-v-3aea70fa] {
   border-radius: var(--border-radius);
   border: 2px solid var(--color-background-darker);
 }
-.gif-picker-content .attribution img[data-v-3aea70fa] {
+.meme-picker-content .attribution img[data-v-3aea70fa] {
   height: 100%;
 }
-.gif-picker-content .input-wrapper[data-v-3aea70fa] {
+.meme-picker-content .input-wrapper[data-v-3aea70fa] {
   display: flex;
   align-items: center;
   width: 100%;
 }
-.gif-picker-content .input-wrapper input[data-v-3aea70fa] {
+.meme-picker-content .input-wrapper input[data-v-3aea70fa] {
   flex-grow: 1;
 }
-.gif-picker-content .input-wrapper .input-loading[data-v-3aea70fa] {
+.meme-picker-content .input-wrapper .input-loading[data-v-3aea70fa] {
   padding: 0 4px;
 }
-.gif-picker-content .empty-content-wrapper[data-v-3aea70fa] {
+.meme-picker-content .empty-content-wrapper[data-v-3aea70fa] {
   display: flex;
   align-items: center;
   height: 5000px;
 }
-.gif-picker-content .empty-content-wrapper .empty-content-img[data-v-3aea70fa] {
+.meme-picker-content .empty-content-wrapper .empty-content-img[data-v-3aea70fa] {
   width: 100px;
 }
-.gif-picker-content .results[data-v-3aea70fa] {
+.meme-picker-content .results[data-v-3aea70fa] {
   width: 98%;
   height: 5000px;
   display: grid;
@@ -856,25 +892,25 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.gif-picker-content[data-v-3aea70fa] {
   margin-top: 12px;
   padding-right: 16px;
 }
-.gif-picker-content .results .result[data-v-3aea70fa]:hover {
+.meme-picker-content .results .result[data-v-3aea70fa]:hover {
   border: 2px solid var(--color-primary);
   border-radius: var(--border-radius);
 }
-.gif-picker-content .results .result.selected[data-v-3aea70fa] {
+.meme-picker-content .results .result.selected[data-v-3aea70fa] {
   border: 4px solid var(--color-primary);
   border-radius: var(--border-radius);
 }
-.gif-picker-content .results[data-v-3aea70fa] .infinite-status-prompt {
+.meme-picker-content .results[data-v-3aea70fa] .infinite-status-prompt {
   height: 100%;
 }
-.gif-picker-content .results[data-v-3aea70fa] .infinite-status-prompt .infinite-end {
+.meme-picker-content .results[data-v-3aea70fa] .infinite-status-prompt .infinite-end {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.gif-picker-content .results[data-v-3aea70fa] .infinite-status-prompt .infinite-end img {
+.meme-picker-content .results[data-v-3aea70fa] .infinite-status-prompt .infinite-end img {
   width: 50px;
 }`, ""]);
 // Exports
@@ -1295,4 +1331,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=8c8914dbb8950cda4a31
+//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=c20494711048b2ee01dc

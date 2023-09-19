@@ -56,7 +56,12 @@ class MemegenSearchMemesProvider implements IProvider {
 		return 20;
 	}
 
-	
+	/**
+	 * Get memes sorted by a search based on the provided query term
+	 * @param IUser $user
+	 * @param ISearchQuery $query
+	 * @return SearchResult
+	 */
 	public function search(IUser $user, ISearchQuery $query): SearchResult {
 		/*if (!$this->appManager->isEnabledForUser(Application::APP_ID, $user)) {
 			return SearchResult::complete($this->getName(), []);

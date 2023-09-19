@@ -1,43 +1,45 @@
 <template>
-	<div>
-		<NcModal container=".gif-picker-content"
+	<div class="meme-caps-modal">
+		<NcModal container=".meme-picker-content"
 			:show.sync="showDialog"
-			@close="closeCapsDialog"
 			size="small"
 			name="Caps dialog"
-			:outTransition="true"
-			:hasNext="true"
-			:hasPrevious="true">
+			:out-transition="true"
+			:has-next="true"
+			:has-previous="true"
+			@close="closeCapsDialog">
 			<div v-if="meme !== null" class="meme-caps-dialog">
+				<h2>
+					{{ t('memegen', 'Caption your meme') }}
+				</h2>
 				<div class="dialog-wrapper">
 					<div v-for="n in parseInt(meme.lines)"
-						class="input-wrapper"
-						:key="n">
+						:key="n"
+						class="input-wrapper">
 						<NcTextField
 							:key="n"
 							:ref="'meme-caption-' + String(n)"
 							:label="'Caption ' + String(n)"
 							:value.sync="captions[n-1]"
-							@update:value="onCapUpdate()">
-						</NcTextField>
+							@update:value="onCapUpdate()" />
 					</div>
 				</div>
 				<div class="meme-renderer">
 					<div v-if="!isLoaded" class="loading-icon">
 						<NcLoadingIcon
 							:size="44"
-							:title="t('integration_giphy', 'Loading GIF')" />
+							:title="t('memegen', 'Loading meme')" />
 					</div>
-					<img v-show="isLoaded"
+					<img v-show="imgUrl !== ''"
 						class="meme-image"
 						:src="imgUrl"
 						@load="isLoaded = true">
 				</div>
-				<div class="input-wrapper">
+				<div class="button-wrapper">
 					<NcButton
-						@click="onSubmit"
-						type="primary">
-						Submit
+						type="primary"
+						@click="onSubmit">
+						Use this meme
 					</NcButton>
 				</div>
 			</div>
@@ -50,6 +52,7 @@ import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { generateUrl } from '@nextcloud/router'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import { delay } from '../utils.js'
 
 export default {
 	name: 'GetCapsDialog',
@@ -79,6 +82,12 @@ export default {
 			this.showDialog = false
 		},
 		onCapUpdate() {
+			delay(() => {
+				this.updateCaps()
+			}, 500)()
+		},
+		updateCaps() {
+			this.isLoaded = false
 			let getParams = ''
 			for (let i = 0; i < this.captions.length; i++) {
 				let caption = this.captions[i]
@@ -109,7 +118,6 @@ export default {
 			externalUrl += '.jpg'
 
 			this.$emit('submit', externalUrl)
-			// this.showDialog = false
 		},
 		encodeCaption(caption) {
 			// Replace space () with underscore (_)
@@ -140,25 +148,37 @@ export default {
 			return caption
 
 		},
-	}
+	},
 }
 </script>
 <style scoped lang="scss">
-.meme-caps-dialog {
+.meme-caps-modal {
 	width: 100%;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 0px 0px 12px;
+}
+
+.meme-caps-dialog {
+	width: 95%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 12px 16px 0 16px;
-	overflow-y: auto;
-	max-height: 800px;
+	padding: 12px 0px 0px 12px;
+
+	h2 {
+		display: flex;
+		align-items: center;
+	}
 
 	.dialog-wrapper {
 		width: 90%;
 		display: grid;
 		grid-gap: 8px;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		justify-content: center;
+		align-items: center;
 		.input-wrapper {
 			display: flex;
 			align-items: center;
@@ -179,15 +199,35 @@ export default {
 		justify-content: center;
 		width: 100%;
 		max-height: 640px;
+		min-height: 640px;
 		object-fit: cover;
 		flex-direction: column;
 		padding: 20px 0px 20px 0px;
-		input {
-			flex-grow: 1;
+		img {
+			width: 100%;
+			max-height: 640px;
+			object-fit: cover;
 		}
-		.input-loading {
-			padding: 0 4px;
+
+		.loading-icon {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1;
 		}
+	}
+
+	.button-wrapper {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		flex-direction: column;
+		padding: 12px 12px 12px 12px;
 	}
 }
 </style>
