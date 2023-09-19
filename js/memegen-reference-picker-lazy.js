@@ -86,7 +86,7 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit() {
       let externalUrl = 'https://api.memegen.link/images/' + this.meme.memeId;
       for (let i = 0; i < this.captions.length; i++) {
-        externalUrl += '/' + this.encodeCaption(this.captions[i]);
+        externalUrl += '/' + encodeURIComponent(this.encodeCaption(this.captions[i]));
       }
       externalUrl += '.jpg';
       this.$emit('submit', externalUrl);
@@ -116,6 +116,9 @@ __webpack_require__.r(__webpack_exports__);
 
       // Replace double quote (") with 2 single quotes ('')
       caption = caption.replace(/"/g, "''");
+
+      // We need to escape the single quotes as well as the generated links won't be resolved by nextcloud otherwise...
+      caption = caption.replace(/'/g, '%27');
       return caption;
     }
   }
@@ -1326,4 +1329,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=b025f1f47518612c4317
+//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=46387e27cec86d107b32
