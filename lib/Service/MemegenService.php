@@ -6,6 +6,9 @@ use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Memegen\AppInfo\Application;
+use OCP\AppFramework\Http\DataResponse;
+use OCP\ICache;
+use OCP\ICacheFactory;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
 use OCP\IConfig;
@@ -21,18 +24,22 @@ class MemegenService {
 	private IConfig $config;
 	private IL10N $l10n;
     private array $memeTemplates;
+    private ICache $serverCache;
 
 	public function __construct (LoggerInterface $logger,
 								 IClientService  $clientService,
 								 IConfig $config,
-								 IL10N $l10n) {
+								 IL10N $l10n,
+                                 ICacheFactory $cacheFactory) {
 		$this->client = $clientService->newClient();
 
 		$this->logger = $logger;
 		$this->config = $config;
 		$this->l10n = $l10n;
 
-        $this->memeTemplates = ["aag" => ["name" => "Ancient Aliens Guy","blank_url" => "https://api.memegen.link/images/aag.png","lines" => "2",],
+        $this->serverCache = $cacheFactory->isAvailable() ? $cacheFactory->createDistributed('memegen') : null;
+
+        /*$this->memeTemplates = ["aag" => ["name" => "Ancient Aliens Guy","blank_url" => "https://api.memegen.link/images/aag.png","lines" => "2",],
         "ackbar" => ["name" => "It's A Trap!","blank_url" => "https://api.memegen.link/images/ackbar.png","lines" => "2",],
         "afraid" => ["name" => "Afraid to Ask Andy","blank_url" => "https://api.memegen.link/images/afraid.png","lines" => "2",],
         "agnes" => ["name" => "Agnes Harkness Winking","blank_url" => "https://api.memegen.link/images/agnes.png","lines" => "2",],
@@ -230,7 +237,7 @@ class MemegenService {
         "yodawg" => ["name" => "Xzibit Yo Dawg","blank_url" => "https://api.memegen.link/images/yodawg.png","lines" => "2",],
         "yuno" => ["name" => "Y U NO Guy","blank_url" => "https://api.memegen.link/images/yuno.png","lines" => "2",],
         "zero-wing" => ["name" => "All Your Base Are Belong to Us","blank_url" => "https://api.memegen.link/images/zero-wing.png","lines" => "1",],
-        ];
+        ];*/
 	}
 
 	/**
@@ -243,12 +250,11 @@ class MemegenService {
 	 * @return array request result
 	 */
 	public function searchMemes(string $query, int $offset = 0, int $limit = 5): array {
-
-        #TODO: refresh template list online every 24h?
+        $memeTemplates = $this->getMemeTemplates();
         #TODO: optimize search? 
         # For now just brute force through a hardcoded list:
         $distanceArr = [];
-        foreach($this->memeTemplates as $memeShortName => $memeInfo) {
+        foreach($memeTemplates as $memeShortName => $memeInfo) {
             
             $distanceArr[$memeShortName] = levenshtein(strtoupper($query),strtoupper($memeInfo['name']),0,1,1);
             
@@ -261,12 +267,56 @@ class MemegenService {
 
 		$result = [];
         foreach (array_keys($distanceArr) as $key) {
-            $result[] = ["memeId" => $key, "alt" => $this->memeTemplates[$key]["name"], "blank_url" =>$this->memeTemplates[$key]["blank_url"], 'lines' =>$this->memeTemplates[$key]['lines']];
+            $result[] = ["memeId" => $key, "alt" => $memeTemplates[$key]["name"], "blank_url" =>$memeTemplates[$key]["blank_url"], 'lines' =>$memeTemplates[$key]['lines']];
         }
 
         return $result;
 
 	}
+
+    /**
+     * Get an up-to-date list of all meme templates from the memegen service.
+     * 
+     * 
+     */
+    private function getMemeTemplates(): ?array {
+        $cachedTemplates = null;
+        
+        if($this->serverCache !== null) {
+            $cachedTemplates = $this->serverCache->get('memeTemplates');
+        }
+        
+        if ($cachedTemplates !== null) {
+            return $cachedTemplates;
+        }
+        
+        try {
+            $templateResponse = $this->client->get(Application::MEME_SERVICE_URL . '/templates/');
+            $templateResponse = json_decode($templateResponse->getBody(), true);
+            // Parse the response into a more usable format
+            $templateResponse = array_map(function ($template) {
+                return [
+                    'memeId' => $template['id'],
+                    'name' => $template['name'],
+                    'blank_url' => $template['blank'],
+                    'lines' => $template['lines'],
+                ];
+            }, $templateResponse);
+
+            //Use the memeId as the key for the array
+            $templateResponse = array_combine(array_column($templateResponse, 'memeId'), $templateResponse);
+
+            // Cache the templates for 24 hours
+            if($this->serverCache !== null) {
+                $this->serverCache->set('memeTemplates', $templateResponse, 86400);
+            }            
+
+            return $templateResponse;
+        } catch (Exception|Throwable $e) {
+            $this->logger->warning('Memegen meme template request error: ' . $e->getMessage(), ['app' => Application::APP_ID]);
+            return null;
+        }
+    }
 
 	
     /**
@@ -276,11 +326,13 @@ class MemegenService {
      * @return array|null
      */
 	public function getMemeInfo(string $memeName): ?array {
-		if (!isset($this->memeTemplates[$memeName])) {
+        $memeTemplates = $this->getMemeTemplates();
+
+		if (!isset($memeTemplates[$memeName])) {
             return null;
         }
 
-        return $this->memeTemplates[$memeName];
+        return $memeTemplates[$memeName];
 	}
 
 	/**
@@ -294,7 +346,9 @@ class MemegenService {
     public function getMemeContent(string $memeId, ?array $captions): ?array {
         #TODO: Resize images as necessary
 		#$photoInfo = $this->getPhotoInfo($photoId);
-		if (isset($this->memeTemplates[$memeId])) {
+        $memeTemplates = $this->getMemeTemplates();
+
+		if (isset($memeTemplates[$memeId])) {
 			try {
                 
                 if($captions === null){

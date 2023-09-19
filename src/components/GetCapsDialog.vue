@@ -93,9 +93,10 @@ export default {
 				let caption = this.captions[i]
 				if (caption === '') {
 					caption = '_'
+				} else {
+					this.encodeCaption(caption)
 				}
-
-				caption = encodeURIComponent('captions[' + String(i) + ']') + '=' + encodeURIComponent(this.encodeCaption(caption))
+				caption = encodeURIComponent('captions[' + String(i) + ']') + '=' + caption
 
 				if (i < this.captions.length - 1) {
 					caption += '&'
@@ -120,11 +121,11 @@ export default {
 			this.$emit('submit', externalUrl)
 		},
 		encodeCaption(caption) {
-			// Replace space () with underscore (_)
-			caption = caption.replace(/ /g, '_')
-
 			// Replace underscore (_) with 2 underscores (__)
 			caption = caption.replace(/_/g, '__')
+
+			// Replace space () with underscore (_)
+			caption = caption.replace(/ /g, '_')
 
 			// Replace dash (-) with 2 dashes (--)
 			caption = caption.replace(/-/g, '--')
