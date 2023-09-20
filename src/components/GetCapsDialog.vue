@@ -114,7 +114,7 @@ export default {
 			let externalUrl = 'https://api.memegen.link/images/' + this.meme.memeId
 
 			for (let i = 0; i < this.captions.length; i++) {
-				externalUrl += '/' + encodeURIComponent(this.encodeCaption(this.captions[i]))
+				externalUrl += '/' + this.encodeCaption(this.captions[i])
 			}
 			externalUrl += '.jpg'
 
@@ -145,6 +145,8 @@ export default {
 
 			// Replace double quote (") with 2 single quotes ('')
 			caption = caption.replace(/"/g, "''")
+
+			caption = encodeURIComponent(caption)
 
 			// We need to escape the single quotes and stars (*) as well since the generated links won't be resolved by nextcloud otherwise
 			caption = caption.replace(/'/g, '%27')
