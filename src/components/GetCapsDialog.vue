@@ -146,8 +146,9 @@ export default {
 			// Replace double quote (") with 2 single quotes ('')
 			caption = caption.replace(/"/g, "''")
 
-			// We need to escape the single quotes as well as the generated links won't be resolved by nextcloud otherwise...
+			// We need to escape the single quotes and stars (*) as well since the generated links won't be resolved by nextcloud otherwise
 			caption = caption.replace(/'/g, '%27')
+			caption = caption.replace(/\*/g, '%2A')
 
 			return caption
 		},
