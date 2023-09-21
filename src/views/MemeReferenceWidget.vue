@@ -1,7 +1,7 @@
 <template>
 	<div class="memegen-meme-reference">
 		<div class="meme-wrapper">
-			<strong>
+			<strong v-if="richObject.alt !== null">
 				{{ richObject.alt }}
 			</strong>
 			<div v-if="!isLoaded" class="loading-icon">
@@ -72,7 +72,7 @@ export default {
 	padding: 12px;
 	white-space: normal;
 
-	.photo-wrapper {
+	.meme-wrapper {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -98,10 +98,9 @@ export default {
 			background-color: var(--color-main-background);
 			.content {
 				height: 33px;
-				width: 80px;
+				width: 33px;
 				background-image: url('../../img/memegen.logo.png');
-				background-size: 80px 33px;
-				filter: var(--background-invert-if-dark);
+				background-size: 33px 33px;
 			}
 		}
 	}
