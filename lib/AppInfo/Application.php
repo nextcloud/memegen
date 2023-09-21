@@ -11,21 +11,24 @@ use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\Collaboration\Reference\RenderReferenceEvent;
 
-class Application extends App implements IBootstrap {
+class Application extends App implements IBootstrap
+{
 	public const APP_ID = 'memegen';
 	public const MEME_SERVICE_URL = 'https://api.memegen.link';
 
-	public function __construct(/*array $urlParams = []*/) {
-	parent::__construct(self::APP_ID /*,$urlParams*/);
+	public function __construct( /*array $urlParams = []*/)
+	{
+		parent::__construct(self::APP_ID /*,$urlParams*/);
 	}
-	
-	public function register(IRegistrationContext $context): void {
+
+	public function register(IRegistrationContext $context): void
+	{
 		$context->registerSearchProvider(MemegenSearchMemesProvider::class);
 		$context->registerReferenceProvider(MemegenReferenceProvider::class);
 		$context->registerEventListener(RenderReferenceEvent::class, MemegenReferenceListener::class);
 	}
 
-	public function boot(IBootContext $context): void {
+	public function boot(IBootContext $context): void
+	{
 	}
 }
-

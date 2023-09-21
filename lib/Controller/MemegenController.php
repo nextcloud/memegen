@@ -9,19 +9,16 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;
 
-class MemegenController extends Controller {
+class MemegenController extends Controller
+{
 
-	private MemegenService $memegenService;
-	private ?string $userId;
-
-	public function __construct(string        $appName,
-								IRequest      $request,
-								MemegenService $memegenService,
-								?string       $userId)
-	{
+	public function __construct(
+		string $appName,
+		IRequest $request,
+		private MemegenService $memegenService,
+		private ?string $userId
+	) {
 		parent::__construct($appName, $request);
-		$this->memegenService = $memegenService;
-		$this->userId = $userId;
 	}
 
 	/**
@@ -32,7 +29,8 @@ class MemegenController extends Controller {
 	 * @param array|null $captions
 	 * @return DataDisplayResponse
 	 */
-	public function getMemeContent(string $memeId, ?array $captions): DataDisplayResponse {
+	public function getMemeContent(string $memeId, ?array $captions): DataDisplayResponse
+	{
 
 
 		$memeResponse = $this->memegenService->getMemeContent($memeId, $captions);
@@ -47,7 +45,7 @@ class MemegenController extends Controller {
 		}
 		return new DataDisplayResponse('', Http::STATUS_BAD_REQUEST);
 	}
-	
+
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
@@ -57,10 +55,11 @@ class MemegenController extends Controller {
 	 * @param int|null $limit The index of the last search result to return
 	 * @return DataResponse
 	 */
-	public function search(?string $term = '', ?int $offset = null, ?int $limit = 20): DataResponse {
+	public function search(?string $term = '', ?int $offset = null, ?int $limit = 20): DataResponse
+	{
 
 		$memeResults = $this->memegenService->searchMemes($term, $offset ?? 0, $limit ?? 20);
-		$results =  ['offset' => $offset + count($memeResults), 'entries' => $memeResults];
+		$results = ['offset' => $offset + count($memeResults), 'entries' => $memeResults];
 
 		return new DataResponse($results);
 	}

@@ -14,53 +14,47 @@ use OCP\IL10N;
 use OCP\IURLGenerator;
 use Exception;
 
-class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements ISearchableReferenceProvider {
+class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements ISearchableReferenceProvider
+{
 
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_meme';
 
-	private ?string $userId;
-	private IConfig $config;
-	private ReferenceManager $referenceManager;
-	private IL10N $l10n;
-	private IURLGenerator $urlGenerator;
-	private MemegenService $memegenService;
-
-	private LoggerInterface $logger;
-	public function __construct(IConfig $config,
-								IL10N $l10n,
-								LoggerInterface $logger,
-								IURLGenerator $urlGenerator,
-								MemegenService $memegenService,
-								ReferenceManager $referenceManager,
-								?string $userId) {
-		$this->userId = $userId;
-		$this->config = $config;
-		$this->referenceManager = $referenceManager;
-		$this->l10n = $l10n;
-		$this->urlGenerator = $urlGenerator;
-		$this->memegenService = $memegenService;
-		$this->logger = $logger;
+	public function __construct(
+		private IConfig $config,
+		private IL10N $l10n,
+		private LoggerInterface $logger,
+		private IURLGenerator $urlGenerator,
+		private MemegenService $memegenService,
+		private ReferenceManager $referenceManager,
+		private ?string $userId
+	) {
+		
 	}
 
-	public function getId(): string	{
+	public function getId(): string
+	{
 		return 'memegen_meme';
 	}
 
-	public function getTitle(): string {
+	public function getTitle(): string
+	{
 		return $this->l10n->t('Memegen memes');
 	}
 
-	public function getOrder(): int	{
+	public function getOrder(): int
+	{
 		return 10;
 	}
 
-	public function getIconUrl(): string {
+	public function getIconUrl(): string
+	{
 		return $this->urlGenerator->getAbsoluteURL(
 			$this->urlGenerator->imagePath(Application::APP_ID, 'app.svg')
 		);
 	}
 
-	public function getSupportedSearchProviderIds(): array {
+	public function getSupportedSearchProviderIds(): array
+	{
 		return ['memegen-search-memes'];
 
 	}
@@ -72,8 +66,9 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	 * @param string $referenceText
 	 * @return bool
 	 */
-	public function matchReference(string $referenceText): bool {
-		
+	public function matchReference(string $referenceText): bool
+	{
+
 		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
 		if (!$adminLinkPreviewEnabled) {
 			return false;
@@ -88,18 +83,25 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	 * @param string $referenceText
 	 * @return IReference|null
 	 */
-	public function resolveReference(string $referenceText): ?IReference {
+	public function resolveReference(string $referenceText): ?IReference
+	{
 		if ($this->matchReference($referenceText)) {
-			
+
 			$memeUrlInfo = $this->parseMemeUrl($referenceText);
 			if ($memeUrlInfo !== null) {
-				$memeInfo = $this->memegenService->getMemeInfo($memeUrlInfo['meme_id']);				
+				$memeInfo = $this->memegenService->getMemeInfo($memeUrlInfo['meme_id']);
 				$reference = new Reference($referenceText);
 				$reference->setTitle($memeInfo['alt'] ?? $this->l10n->t('Memegen meme'));
 				$reference->setDescription('');
-				
-				$imageUrl = $this->urlGenerator->linkToRouteAbsolute(Application::APP_ID . '.memegen.getMemeContent', ['memeId' => $memeUrlInfo['meme_id'], 'captions' => $memeUrlInfo['captions']]);
-								
+
+				$imageUrl = $this->urlGenerator->linkToRouteAbsolute(
+					Application::APP_ID . '.memegen.getMemeContent',
+					[
+						'memeId' => $memeUrlInfo['meme_id'],
+						'captions' => $memeUrlInfo['captions']
+					]
+				);
+
 				$reference->setImageUrl($imageUrl);
 				$memeInfo['proxied_url'] = $imageUrl;
 				$reference->setRichObject(
@@ -119,10 +121,11 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	 * @param string $url
 	 * @return array|null
 	 */
-	private function parseMemeUrl(string $url): ?array {
+	private function parseMemeUrl(string $url): ?array
+	{
 		preg_match('/^(?:https?:\/\/)?(?:www\.)?api\.memegen\.link\/images\/([^\/\?]+)\/([^\?]+)\.(gif|jpg|png)/i', $url, $matches);
 		if (count($matches) > 3) {
-			return ['captions' => explode('/',$matches[2]), 'meme_id' => $matches[1]];
+			return ['captions' => explode('/', $matches[2]), 'meme_id' => $matches[1]];
 		}
 
 		preg_match('/^(?:https?:\/\/)?(?:www\.)?api\.memegen\.link\/images\/([^\/\?]+)\.(gif|jpg|png)$/i', $url, $matches);
@@ -132,15 +135,18 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 		return null;
 	}
 
-	public function getCachePrefix(string $referenceId): string {
+	public function getCachePrefix(string $referenceId): string
+	{
 		return $this->userId ?? '';
 	}
 
-	public function getCacheKey(string $referenceId): ?string {
+	public function getCacheKey(string $referenceId): ?string
+	{
 		return $referenceId;
 	}
 
-	public function invalidateUserCache(string $userId): void {
+	public function invalidateUserCache(string $userId): void
+	{
 		$this->referenceManager->invalidateCache($userId);
 	}
 }

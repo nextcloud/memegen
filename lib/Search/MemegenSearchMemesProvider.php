@@ -16,38 +16,33 @@ use OCP\Search\ISearchQuery;
 use OCP\Search\SearchResult;
 use OCP\Search\SearchResultEntry;
 
-class MemegenSearchMemesProvider implements IProvider {
+class MemegenSearchMemesProvider implements IProvider
+{
 
-	private IAppManager $appManager;
-	private IL10N $l10n;
-	private IConfig $config;
-	private IURLGenerator $urlGenerator;
-	private MemegenService $memegenService;
+	public function __construct(
+		private IAppManager $appManager,
+		private IL10N $l10n,
+		private IConfig $config,
+		private IURLGenerator $urlGenerator,
+		private MemegenService $memegenService
+	) {
 
-	public function __construct(IAppManager   $appManager,
-								IL10N         $l10n,
-								IConfig       $config,
-								IURLGenerator $urlGenerator,
-								MemegenService $memegenService) {
-		$this->appManager = $appManager;
-		$this->l10n = $l10n;
-		$this->config = $config;
-		$this->urlGenerator = $urlGenerator;
-		$this->memegenService = $memegenService;
 	}
 
-	
-	public function getId(): string {
+	public function getId(): string
+	{
 		return 'memegen-search-memes';
 	}
 
-	
-	public function getName(): string {
+
+	public function getName(): string
+	{
 		return $this->l10n->t('Memegen memes');
 	}
 
-	
-	public function getOrder(string $route, array $routeParameters): int {
+
+	public function getOrder(string $route, array $routeParameters): int
+	{
 		if (strpos($route, Application::APP_ID . '.') === 0) {
 			// Active app, prefer Memegen results
 			return -1;
@@ -62,10 +57,11 @@ class MemegenSearchMemesProvider implements IProvider {
 	 * @param ISearchQuery $query
 	 * @return SearchResult
 	 */
-	public function search(IUser $user, ISearchQuery $query): SearchResult {
+	public function search(IUser $user, ISearchQuery $query): SearchResult
+	{
 		/*if (!$this->appManager->isEnabledForUser(Application::APP_ID, $user)) {
-			return SearchResult::complete($this->getName(), []);
-		}*/
+				  return SearchResult::complete($this->getName(), []);
+			  }*/
 
 		$limit = $query->getLimit();
 		$term = $query->getTerm();
@@ -73,7 +69,7 @@ class MemegenSearchMemesProvider implements IProvider {
 		$offset = $offset ? intval($offset) : 0;
 
 		$memes = $this->memegenService->searchMemes($term, $offset, $limit);
-		
+
 		$formattedResults = array_map(function (array $entry): SearchResultEntry {
 			return new SearchResultEntry(
 				$this->getThumbnailUrl($entry),
@@ -96,7 +92,8 @@ class MemegenSearchMemesProvider implements IProvider {
 	 * @param array $entry
 	 * @return string
 	 */
-	protected function getMainText(array $entry): string {
+	protected function getMainText(array $entry): string
+	{
 		return $entry['alt'];
 	}
 
@@ -104,7 +101,8 @@ class MemegenSearchMemesProvider implements IProvider {
 	 * @param array $entry
 	 * @return string
 	 */
-	protected function getSubline(array $entry): string {
+	protected function getSubline(array $entry): string
+	{
 		return '';
 	}
 
@@ -112,7 +110,8 @@ class MemegenSearchMemesProvider implements IProvider {
 	 * @param array $entry
 	 * @return string
 	 */
-	protected function getUrl(array $entry): string {
+	protected function getUrl(array $entry): string
+	{
 		return $entry['blank_url'] ?? '';
 	}
 
@@ -120,7 +119,8 @@ class MemegenSearchMemesProvider implements IProvider {
 	 * @param array $entry
 	 * @return string
 	 */
-	protected function getThumbnailUrl(array $entry): string {
+	protected function getThumbnailUrl(array $entry): string
+	{
 		$memeId = $entry['memeId'] ?? '';
 		return $this->urlGenerator->linkToRouteAbsolute(Application::APP_ID . '.memegen.getMemeContent', ['memeId' => $memeId]);
 	}
