@@ -1,13 +1,10 @@
 <template>
 	<div class="meme-caps-modal">
 		<NcModal container=".meme-picker-content"
-			:show.sync="showDialog"
 			size="small"
 			name="Caps dialog"
 			:out-transition="true"
-			:has-next="true"
-			:has-previous="true"
-			@close="closeCapsDialog">
+			@close="onClose">
 			<div v-if="meme !== null" class="meme-caps-dialog">
 				<h2>
 					{{ t('memegen', 'Caption your meme') }}
@@ -62,24 +59,28 @@ export default {
 		NcLoadingIcon,
 		NcButton,
 	},
+	props: {
+		meme: {
+			type: Array,
+			default: null,
+		},
+	},
 	data() {
 		return {
-			showDialog: false,
-			meme: null,
 			captions: [],
 			isLoaded: false,
 			imgUrl: '',
 		}
 	},
+	mounted() {
+		if (this.meme !== null) {
+			this.initialize()
+		}
+	},
 	methods: {
-		showCapsDialog(meme) {
-			this.meme = meme
-			this.captions = Array(meme.lines).fill('')
-			this.imgUrl = generateUrl('/apps/memegen/memes/{memeId}', { memeId: meme.memeId })
-			this.showDialog = true
-		},
-		closeCapsDialog() {
-			this.showDialog = false
+		initialize() {
+			this.captions = Array(this.meme.lines).fill('')
+			this.imgUrl = generateUrl('/apps/memegen/memes/{memeId}', { memeId: this.meme.memeId })
 		},
 		onCapUpdate() {
 			delay(() => {
@@ -119,6 +120,9 @@ export default {
 			externalUrl += '.jpg'
 
 			this.$emit('submit', externalUrl)
+		},
+		onClose() {
+			this.$emit('close')
 		},
 		encodeCaption(caption) {
 			// Replace underscore (_) with 2 underscores (__)

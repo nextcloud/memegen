@@ -35,26 +35,30 @@ __webpack_require__.r(__webpack_exports__);
     NcLoadingIcon: (_nextcloud_vue_dist_Components_NcLoadingIcon_js__WEBPACK_IMPORTED_MODULE_3___default()),
     NcButton: (_nextcloud_vue_dist_Components_NcButton_js__WEBPACK_IMPORTED_MODULE_4___default())
   },
+  props: {
+    meme: {
+      type: Array,
+      default: null
+    }
+  },
   data() {
     return {
-      showDialog: false,
-      meme: null,
       captions: [],
       isLoaded: false,
       imgUrl: ''
     };
   },
+  mounted() {
+    if (this.meme !== null) {
+      this.initialize();
+    }
+  },
   methods: {
-    showCapsDialog(meme) {
-      this.meme = meme;
-      this.captions = Array(meme.lines).fill('');
+    initialize() {
+      this.captions = Array(this.meme.lines).fill('');
       this.imgUrl = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_2__.generateUrl)('/apps/memegen/memes/{memeId}', {
-        memeId: meme.memeId
+        memeId: this.meme.memeId
       });
-      this.showDialog = true;
-    },
-    closeCapsDialog() {
-      this.showDialog = false;
     },
     onCapUpdate() {
       (0,_utils_js__WEBPACK_IMPORTED_MODULE_5__.delay)(() => {
@@ -90,6 +94,9 @@ __webpack_require__.r(__webpack_exports__);
       }
       externalUrl += '.jpg';
       this.$emit('submit', externalUrl);
+    },
+    onClose() {
+      this.$emit('close');
     },
     encodeCaption(caption) {
       // Replace underscore (_) with 2 underscores (__)
@@ -239,7 +246,7 @@ const LIMIT = 20;
       searchQuery: '',
       searching: false,
       memes: [],
-      selectedMemeId: null,
+      selectedMeme: null,
       inputPlaceholder: t('memegen', 'Search memes'),
       offset: null,
       abortController: null,
@@ -267,11 +274,8 @@ const LIMIT = 20;
     },
     onSelect(meme) {
       this.cancelSearchRequests();
-      this.selectedMemeId = meme.memeId;
-      this.$refs['caps-dialog'].showCapsDialog(meme);
-      // this.$emit('submit', meme.resourceUrl)
+      this.selectedMeme = meme;
     },
-
     onSubmit(extUrl) {
       this.$emit('submit', extUrl);
     },
@@ -283,6 +287,9 @@ const LIMIT = 20;
     onClear() {
       this.searchQuery = '';
       this.updateSearch();
+    },
+    onCapsDialogClose() {
+      this.selectedMeme = null;
     },
     updateSearch() {
       if (this.$refs.results?.scrollTop) {
@@ -358,18 +365,12 @@ var render = function render() {
   }, [_c("NcModal", {
     attrs: {
       container: ".meme-picker-content",
-      show: _vm.showDialog,
       size: "small",
       name: "Caps dialog",
-      "out-transition": true,
-      "has-next": true,
-      "has-previous": true
+      "out-transition": true
     },
     on: {
-      "update:show": function ($event) {
-        _vm.showDialog = $event;
-      },
-      close: _vm.closeCapsDialog
+      close: _vm.onClose
     }
   }, [_vm.meme !== null ? _c("div", {
     staticClass: "meme-caps-dialog"
@@ -520,14 +521,18 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "meme-picker-content"
-  }, [_c("h2", [_vm._v("\n\t\t" + _vm._s(_vm.t("memegen", "Memegen meme picker")) + "\n\t")]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("\n\t\t" + _vm._s(_vm.t("memegen", "Memegen meme picker")) + "\n\t")]), _vm._v(" "), _vm.selectedMeme !== null ? _c("div", {
     staticClass: "input-wrapper"
   }, [_c("GetCapsDialog", {
     ref: "caps-dialog",
+    attrs: {
+      meme: _vm.selectedMeme
+    },
     on: {
-      submit: _vm.onSubmit
+      submit: _vm.onSubmit,
+      close: _vm.onCapsDialogClose
     }
-  })], 1), _vm._v(" "), _c("div", {
+  })], 1) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "input-wrapper"
   }, [_c("NcTextField", {
     ref: "memegen-search-input",
@@ -1332,4 +1337,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=0157802f693378a10806
+//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=e59ffda2a02df23e26c5

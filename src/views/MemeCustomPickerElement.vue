@@ -3,10 +3,13 @@
 		<h2>
 			{{ t('memegen', 'Memegen meme picker') }}
 		</h2>
-		<div class="input-wrapper">
+		<div v-if="selectedMeme !== null"
+			class="input-wrapper">
 			<GetCapsDialog
 				ref="caps-dialog"
-				@submit="onSubmit" />
+				:meme="selectedMeme"
+				@submit="onSubmit"
+				@close="onCapsDialogClose" />
 		</div>
 		<div class="input-wrapper">
 			<NcTextField
@@ -124,7 +127,7 @@ export default {
 			searchQuery: '',
 			searching: false,
 			memes: [],
-			selectedMemeId: null,
+			selectedMeme: null,
 			inputPlaceholder: t('memegen', 'Search memes'),
 			offset: null,
 			abortController: null,
@@ -159,9 +162,7 @@ export default {
 		},
 		onSelect(meme) {
 			this.cancelSearchRequests()
-			this.selectedMemeId = meme.memeId
-			this.$refs['caps-dialog'].showCapsDialog(meme)
-			// this.$emit('submit', meme.resourceUrl)
+			this.selectedMeme = meme
 		},
 		onSubmit(extUrl) {
 			this.$emit('submit', extUrl)
@@ -174,6 +175,9 @@ export default {
 		onClear() {
 			this.searchQuery = ''
 			this.updateSearch()
+		},
+		onCapsDialogClose() {
+			this.selectedMeme = null
 		},
 		updateSearch() {
 			if (this.$refs.results?.scrollTop) {
