@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.2 – 2023-09-21
+### Fixed
+* Github actions error
+
 ## 1.0.1 – 2023-09-21
 ### Fixed
 * Versioning
