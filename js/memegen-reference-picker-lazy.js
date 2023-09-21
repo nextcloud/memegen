@@ -479,7 +479,7 @@ var render = function render() {
   }, [_c("NcLoadingIcon", {
     attrs: {
       size: 44,
-      title: _vm.t("memegen", "Loading GIF")
+      title: _vm.t("memegen", "Loading memes")
     }
   })], 1) : _vm._e(), _vm._v(" "), _c("img", {
     directives: [{
@@ -712,7 +712,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.meme-caps-modal[data-v-a7f64802] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 0px 0px 12px;
+  padding: 12px 12px 0px 12px;
+  overflow-x: hidden;
 }
 .meme-caps-dialog h2[data-v-a7f64802] {
   display: flex;
@@ -1337,4 +1338,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=e59ffda2a02df23e26c5
+//# sourceMappingURL=memegen-reference-picker-lazy.js.map?v=1bce1d57bd77f732101a

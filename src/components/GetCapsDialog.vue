@@ -176,7 +176,8 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 12px 0px 0px 12px;
+	padding: 12px 12px 0px 12px;
+	overflow-x: hidden;
 
 	h2 {
 		display: flex;
