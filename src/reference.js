@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com>
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import { registerWidget, registerCustomPickerElement, NcCustomPickerRenderResult } from '@nextcloud/vue/dist/Components/NcRichText.js'
 
 import { linkTo } from '@nextcloud/router'
