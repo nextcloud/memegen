@@ -166,7 +166,8 @@ export default {
 }
 
 .meme-caps-dialog {
-	width: 95%;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
