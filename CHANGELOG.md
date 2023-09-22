@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.4 – 2023-09-22
+### Fixed
+* More errors in the Makefile
+
 ## 1.0.3 – 2023-09-22
 ### Fixed
 * More app skeleton -creator errors in the Makefile
