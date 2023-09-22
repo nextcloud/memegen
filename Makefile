@@ -133,7 +133,6 @@ appstore:
 	--exclude="../$(app_name)/*.log" \
 	--exclude="../$(app_name)/phpunit*xml" \
 	--exclude="../$(app_name)/composer.*" \
-	--exclude="../$(app_name)/node_modules" \
 	--exclude="../$(app_name)/tests" \
 	--exclude="../$(app_name)/js/node_modules" \
 	--exclude="../$(app_name)/js/tests" \
@@ -149,6 +148,8 @@ appstore:
 	--exclude="../$(app_name)/protractor\.*" \
 	--exclude="../$(app_name)/.*" \
 	--exclude="../$(app_name)/js/.*" \
+	--exclude="../$(app_name)/webpack.config.js" \
+	--exclude="../$(app_name)/stylelint.config.js" \
 	../$(app_name) \
 
 .PHONY: test
