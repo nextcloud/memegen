@@ -158,7 +158,6 @@ export default {
 	methods: {
 		focusOnInput() {
 			setTimeout(() => {
-				// this.$refs['memegen-search-input']?.focus()
 				this.$refs['memegen-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
 		},

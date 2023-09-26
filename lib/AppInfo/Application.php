@@ -6,7 +6,6 @@ namespace OCA\Memegen\AppInfo;
 
 use OCA\Memegen\Listener\MemegenReferenceListener;
 use OCA\Memegen\Reference\MemegenReferenceProvider;
-use OCA\Memegen\Search\MemegenSearchMemesProvider;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Bootstrap\IBootContext;
@@ -25,7 +24,6 @@ class Application extends App implements IBootstrap
 
 	public function register(IRegistrationContext $context): void
 	{
-		$context->registerSearchProvider(MemegenSearchMemesProvider::class);
 		$context->registerReferenceProvider(MemegenReferenceProvider::class);
 		$context->registerEventListener(RenderReferenceEvent::class, MemegenReferenceListener::class);
 	}
