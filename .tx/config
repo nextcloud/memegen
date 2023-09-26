@@ -1,0 +1,9 @@
+[main]
+host     = https://www.transifex.com
+lang_map = cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_TH: th, ja_JP: ja, bg_BG: bg
+
+[o:nextcloud:p:nextcloud:r:memegen]
+file_filter = translationfiles/<lang>/memegen.po
+source_file = translationfiles/templates/memegen.pot
+source_lang = en
+type        = PO
