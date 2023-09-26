@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.5 – 2023-09-26
+### Fixed
+* Remove unnecessary files from the Appstore build
+* Remove unnecessary search provider
+* Visible name of the app
+
 ## 1.0.4 – 2023-09-22
 ### Fixed
 * More errors in the Makefile
