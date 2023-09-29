@@ -7,7 +7,7 @@
     -->
     <id>memegen</id>
     <name>MemeGen</name>
-    <summary>A meme SmartPicker</summary>
+    <summary>A meme Smart Picker</summary>
     <description><![CDATA[A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality.]]></description>
     <version>1.0.5</version>
     <licence>agpl</licence>
