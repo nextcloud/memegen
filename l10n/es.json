@@ -1,0 +1,17 @@
+{ "translations": {
+    "Memegen memes" : "Memes Memegen",
+    "Memegen meme" : "Meme Memegen",
+    "MemeGen" : "MemeGen",
+    "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Una herramienta para seleccionar una plantilla de un meme y rellenarlo con leyendas de texto utilizando la funcionalidad de selector inteligente.",
+    "Caption your meme" : "Colocarle una leyenda a su meme",
+    "Loading meme" : "Cargando meme",
+    "Loading memes" : "Cargando memes",
+    "Memegen meme picker" : "Selector de memes Memegen",
+    "Searching..." : "Buscando ...",
+    "No results" : "Sin resultados",
+    "No more memes" : "No hay más memes",
+    "Search memes" : "Buscar memes",
+    "Powered by Memegen.link" : "Funciona con Memegen.link",
+    "Loading meme template" : "Cargando plantilla de meme"
+},"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
+}
