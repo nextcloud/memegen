@@ -4,6 +4,7 @@ OC.L10N.register(
     "Memegen memes" : "Memegen-Memes",
     "Memegen meme" : "Memegen-Meme",
     "MemeGen" : "MemeGen",
+    "A meme Smart Picker" : "Ein Meme Smart Picker",
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Ein Tool zum Auswählen einer Meme-Vorlage und zum Ausfüllen benutzerdefinierter Textbeschriftungen mithilfe der Smart Picker-Funktionalität.",
     "Caption your meme" : "Geben Sie Ihrem Meme eine Überschrift",
     "Loading meme" : "Lade Meme",
