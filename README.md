@@ -9,9 +9,8 @@ A Nextcloud Smart Picker integration for generating memes using the [memegen.lin
 
 This app adds:
 
-- A search provider for memes
 - A link reference provider to render links to memes in Talk and Text
-- A custom link picker to get meme links with user provided captions
+- A custom SmartPicker dialog to generate memes with user provided captions
 
 
 ![memegen_2](https://github.com/MB-Finski/memegen/assets/64466176/353e1a73-f16b-4c3d-a8c6-b5244728d45c)
