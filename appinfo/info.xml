@@ -14,7 +14,9 @@
     <author mail="sami.finnila@nextcloud.com" >Sami Finnilä</author>
     <namespace>Memegen</namespace>
     <category>integration</category>
-    <bugs>https://github.com/nextcloud/memegen</bugs>
+    <website>https://github.com/nextcloud/memegen</website>
+    <bugs>https://github.com/nextcloud/memegen/issues</bugs>
+    <screenshot>https://github.com/MB-Finski/memegen/assets/64466176/eb4e8244-d5f6-4408-9d85-6a0440c5b3b3</screenshot>
     <dependencies>
         <nextcloud min-version="27" max-version="28"/>
     </dependencies>
