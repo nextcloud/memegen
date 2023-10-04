@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.6 - 2023-10-02
+### Fixed
+* Icon colouring in the apps menu
+### Added
+* Translations
+
 ## 1.0.5 – 2023-09-26
 ### Fixed
 * Remove unnecessary files from the Appstore build
