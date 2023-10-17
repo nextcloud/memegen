@@ -107,7 +107,7 @@ export default {
 				getParams += caption
 			}
 
-			let newUrl = generateUrl('/apps/memegen/memes/{memeId}', { memeId: this.meme.memeId },)
+			let newUrl = generateUrl('/apps/memegen/memes/{memeId}', { memeId: this.meme.memeId })
 			newUrl += '?' + getParams
 
 			this.imgUrl = newUrl

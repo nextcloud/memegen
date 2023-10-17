@@ -203,11 +203,11 @@ export default {
 			const url = this.offset === null
 				? generateUrl(
 					'apps/memegen/search?term={term}&limit={limit}',
-					{ term: this.searchQuery, limit }
+					{ term: this.searchQuery, limit },
 				)
 				: generateUrl(
 					'apps/memegen/search?term={term}&offset={offset}&limit={limit}',
-					{ term: this.searchQuery, offset: this.offset, limit }
+					{ term: this.searchQuery, offset: this.offset, limit },
 				)
 			return axios.get(url, {
 				signal: this.abortController.signal,
