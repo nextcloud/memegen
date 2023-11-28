@@ -10,7 +10,7 @@ OC.L10N.register(
     "Loading meme" : "Cargando o meme",
     "Loading memes" : "Cargando os memes",
     "Memegen meme picker" : "Selector de memes MemeGen",
-    "Searching..." : "Buscando…",
+    "Searching..." : "Buscando...",
     "No results" : "Sen resultados",
     "No more memes" : "Non hai máis memes",
     "Search memes" : "Buscar memes",
