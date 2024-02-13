@@ -3,8 +3,11 @@
 .idea
 *.iml
 /vendor/
+/vendor-bin/**/vendor/
 /build/
-/node_modules/
+node_modules/
 /.php_cs.cache
 js/*hot-update.*
 /js/
+.php-cs-fixer.cache
+/tests/.phpunit.result.cache

@@ -1,27 +1,22 @@
 <?php
+
 // SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 namespace OCA\Memegen\Service;
 
 use Exception;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
 use OCA\Memegen\AppInfo\Application;
-use OCP\AppFramework\Http\DataResponse;
-use OCP\ICache;
-use OCP\ICacheFactory;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
+use OCP\ICache;
+use OCP\ICacheFactory;
 use OCP\IConfig;
 use OCP\IL10N;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-
-class MemegenService
-{
-
+class MemegenService {
 	private array $memeTemplates;
 	private ICache $serverCache;
 	private IClient $client;
@@ -40,16 +35,15 @@ class MemegenService
 	/**
 	 * Search the memeTemplates for matching memes based on the long version of the meme name.
 	 * Return an array sorted based on the levenshtein distance (to allow for partial matches).
-	 * 
+	 *
 	 * @param string $query What to search for
 	 * @param int $offset
 	 * @param int $limit
 	 * @return array request result
 	 */
-	public function searchMemes(string $query, int $offset = 0, int $limit = 5): array
-	{
+	public function searchMemes(string $query, int $offset = 0, int $limit = 5): array {
 		$memeTemplates = $this->getMemeTemplates();
-		#TODO: optimize search? 
+		#TODO: optimize search?
 		# For now just brute force through the template list:
 		$distanceArr = [];
 		foreach ($memeTemplates as $memeShortName => $memeInfo) {
@@ -61,7 +55,7 @@ class MemegenService
 
 		asort($distanceArr);
 
-		$distanceArr = array_slice($distanceArr, $offset, $limit, True);
+		$distanceArr = array_slice($distanceArr, $offset, $limit, true);
 
 		$result = [];
 		foreach (array_keys($distanceArr) as $key) {
@@ -79,11 +73,10 @@ class MemegenService
 
 	/**
 	 * Get an up-to-date list of all meme templates from the memegen service.
-	 * 
+	 *
 	 * @return array|null
 	 */
-	private function getMemeTemplates(): ?array
-	{
+	private function getMemeTemplates(): ?array {
 		$cachedTemplates = null;
 
 		if ($this->serverCache !== null) {
@@ -128,12 +121,11 @@ class MemegenService
 
 	/**
 	 * Return all meme info contained within the memeTemplates array based on the meme name.
-	 * 
+	 *
 	 * @param string $memeName
 	 * @return array|null
 	 */
-	public function getMemeInfo(string $memeName): ?array
-	{
+	public function getMemeInfo(string $memeName): ?array {
 		$memeTemplates = $this->getMemeTemplates();
 
 		if (!isset($memeTemplates[$memeName])) {
@@ -146,13 +138,12 @@ class MemegenService
 	/**
 	 * Use the memegen service to generate a meme image given a memeId and captions.
 	 * Captions must be encoded using the escape characters specified at https://memegen.link/
-	 * 
+	 *
 	 * @param string $memeId
 	 * @param array|null $captions
 	 * @return array|null
 	 */
-	public function getMemeContent(string $memeId, ?array $captions): ?array
-	{
+	public function getMemeContent(string $memeId, ?array $captions): ?array {
 		#TODO: Resize images as necessary
 
 		$memeTemplates = $this->getMemeTemplates();

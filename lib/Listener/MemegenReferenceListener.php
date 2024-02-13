@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -10,10 +11,8 @@ use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\Util;
 
-class MemegenReferenceListener implements IEventListener
-{
-	public function handle(Event $event): void
-	{
+class MemegenReferenceListener implements IEventListener {
+	public function handle(Event $event): void {
 		if (!$event instanceof RenderReferenceEvent) {
 			return;
 		}
