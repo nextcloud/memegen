@@ -10,6 +10,7 @@ use OCP\Collaboration\Reference\RenderReferenceEvent;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\Util;
+
 /**
  * @implements IEventListener<RenderReferenceEvent>
  */
