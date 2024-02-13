@@ -18,7 +18,7 @@ use Throwable;
 
 class MemegenService {
 	private array $memeTemplates;
-	private ICache $serverCache;
+	private null|ICache $serverCache;
 	private IClient $client;
 
 	public function __construct(

@@ -29,5 +29,8 @@
         "allow-plugins": {
             "bamarni/composer-bin-plugin": true
         }
+    },
+    "require-dev": {
+        "nextcloud/ocp": "^28.0"
     }
 }
