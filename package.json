@@ -1,7 +1,7 @@
 {
   "name": "memegen",
   "description": "A meme Smart Picker",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "Sami Finnilä <sami.finnila@nextcloud.com>",
   "contributors": [],
   "bugs": {
