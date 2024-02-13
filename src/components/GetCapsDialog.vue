@@ -11,11 +11,11 @@
 				<h2>
 					{{ t('memegen', 'Caption your meme') }}
 				</h2>
-				<div class="dialog-wrapper">
+				<div v-if="captions.length > 0" class="dialog-wrapper">
 					<div v-for="n in parseInt(meme.lines)"
 						:key="n"
 						class="input-wrapper">
-						<NcTextField
+						<NcTextField v-if="captions.length > 0"
 							:key="n"
 							:ref="'meme-caption-' + String(n)"
 							:label="'Caption ' + String(n)"
@@ -38,7 +38,7 @@
 					<NcButton
 						type="primary"
 						@click="onSubmit">
-						Use this meme
+						{{ t('memegen','Use this meme') }}
 					</NcButton>
 				</div>
 			</div>
@@ -63,7 +63,7 @@ export default {
 	},
 	props: {
 		meme: {
-			type: Array,
+			type: Object,
 			default: null,
 		},
 	},
@@ -72,6 +72,7 @@ export default {
 			captions: [],
 			isLoaded: false,
 			imgUrl: '',
+			timeout: null,
 		}
 	},
 	mounted() {
@@ -87,7 +88,7 @@ export default {
 		onCapUpdate() {
 			delay(() => {
 				this.updateCaps()
-			}, 500)()
+			}, 1000)()
 		},
 		updateCaps() {
 			this.isLoaded = false
@@ -97,7 +98,7 @@ export default {
 				if (caption === '') {
 					caption = '_'
 				} else {
-					this.encodeCaption(caption)
+					caption = this.encodeCaption(caption)
 				}
 				caption = encodeURIComponent('captions[' + String(i) + ']') + '=' + caption
 
@@ -127,14 +128,14 @@ export default {
 			this.$emit('close')
 		},
 		encodeCaption(caption) {
-			// Replace underscore (_) with 2 underscores (__)
+			// Replace multiple spaces with underscore (_) with 2 underscores (__)
 			caption = caption.replace(/_/g, '__')
-
-			// Replace space () with underscore (_)
-			caption = caption.replace(/ /g, '_')
 
 			// Replace dash (-) with 2 dashes (--)
 			caption = caption.replace(/-/g, '--')
+
+			// Replace any number of spaces with a single underscore (_)
+			caption = caption.replace(/ +/g, '_')
 
 			// Replace newline character with tilde + N (~n)
 			caption = caption.replace(/\n/g, '~n')
@@ -225,10 +226,8 @@ export default {
 
 		.loading-icon {
 			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
+			top: 0.5;
+			left: 0.5;
 			display: flex;
 			justify-content: center;
 			align-items: center;
