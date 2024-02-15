@@ -8,6 +8,7 @@ OC.L10N.register(
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "أداة لالتقاط قالب للتشخيصة meme template و ملء تعليقات نصية مخصصة باستخدام وظيفة اللاقط الذكي.",
     "Caption your meme" : "علِّق على تشخيصتك meme",
     "Loading meme" : "تحميل التشخيصة",
+    "Use this meme" : "إستَعمِل هذه التشخيصة meme",
     "Loading memes" : "تحميل التشخيصات",
     "Memegen meme picker" : "لاقط التشخيصات المولدة بواسطة Memegen",
     "Searching..." : "بحث ...",

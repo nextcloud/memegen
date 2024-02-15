@@ -8,6 +8,7 @@ OC.L10N.register(
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Алат за избор меме шаблона који се испуњава произвољним натписима текста користећи функционалност Паметног бирача.",
     "Caption your meme" : "Насловите свој меме",
     "Loading meme" : "Меме се учитава",
+    "Use this meme" : "Користи овај мим",
     "Loading memes" : "Мемеи се учитавају",
     "Memegen meme picker" : "Бирач Memegen мемеа",
     "Searching..." : "Претражујем...",
