@@ -8,6 +8,7 @@ OC.L10N.register(
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "一個使用智慧型挑選器功能，用來選取迷因範本並填入自訂文字標題的工具。",
     "Caption your meme" : "為您的迷因加上標題",
     "Loading meme" : "正在載入迷因",
+    "Use this meme" : "使用此迷因",
     "Loading memes" : "正在載入迷因",
     "Memegen meme picker" : "Memegen 迷因挑選器",
     "Searching..." : "正在搜尋……",
