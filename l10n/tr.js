@@ -8,6 +8,7 @@ OC.L10N.register(
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Akıllı seçici ile bir komiklik kalıbı seçmek ve özel metin alt yazılarını doldurmak için kullanılan bir araç.",
     "Caption your meme" : "Komikliğinize yazı ekleyin",
     "Loading meme" : "Komiklik yükleniyor",
+    "Use this meme" : "Bu meme kullanılsın",
     "Loading memes" : "Komiklikler yükleniyor",
     "Memegen meme picker" : "Memegen komiklik seçici",
     "Searching..." : "Aranıyor...",
