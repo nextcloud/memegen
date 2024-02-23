@@ -94,7 +94,7 @@ export default {
 			left: 0;
 			bottom: 0;
 			height: 33px;
-			width: 80px;
+			width: 33px;
 			padding: 0;
 			border-radius: var(--border-radius);
 			background-color: var(--color-main-background);

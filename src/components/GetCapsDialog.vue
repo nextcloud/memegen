@@ -179,8 +179,7 @@ export default {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		align-content: center;
-		justify-content: center;
+		justify-items: center;
 		align-self: center;
 		margin-top: 24px;
 		h2 {
