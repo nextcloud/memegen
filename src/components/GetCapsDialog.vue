@@ -118,8 +118,17 @@ export default {
 			let externalUrl = 'https://api.memegen.link/images/' + this.meme.memeId
 
 			for (let i = 0; i < this.captions.length; i++) {
-				externalUrl += '/' + this.encodeCaption(this.captions[i])
+				if (this.captions[i] !== '') {
+					externalUrl += '/' + this.encodeCaption(this.captions[i])
+				} else {
+					externalUrl += '/_'
+				}
 			}
+
+			while (externalUrl.endsWith('/_')) {
+				externalUrl = externalUrl.slice(0, -2)
+			}
+
 			externalUrl += '.jpg'
 
 			this.$emit('submit', externalUrl)
