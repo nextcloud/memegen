@@ -1,49 +1,49 @@
 <!-- SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com> -->
 <!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
 <template>
-	<div class="meme-caps-modal">
-		<NcModal container=".meme-picker-content"
-			size="small"
-			name="Caps dialog"
-			:out-transition="true"
-			@close="onClose">
-			<div v-if="meme !== null" class="meme-caps-dialog">
-				<h2>
-					{{ t('memegen', 'Caption your meme') }}
-				</h2>
-				<div v-if="captions.length > 0" class="dialog-wrapper">
-					<div v-for="n in parseInt(meme.lines)"
+	<NcModal container=".meme-picker-content"
+		size="small"
+		name="Caps dialog"
+		class="meme-caps-modal"
+		:v-show="meme !== null"
+		:out-transition="true"
+		@close="onClose">
+		<div class="modal-content">
+			<h2>
+				{{ t('memegen', 'Caption your meme') }}
+			</h2>
+			<div v-if="captions.length > 0" class="dialog-wrapper">
+				<div v-for="n in parseInt(meme.lines)"
+					:key="n"
+					class="input-wrapper">
+					<NcTextField v-if="captions.length > 0"
 						:key="n"
-						class="input-wrapper">
-						<NcTextField v-if="captions.length > 0"
-							:key="n"
-							:ref="'meme-caption-' + String(n)"
-							:label="'Caption ' + String(n)"
-							:value.sync="captions[n-1]"
-							@update:value="onCapUpdate()" />
-					</div>
-				</div>
-				<div class="meme-renderer">
-					<div v-if="!isLoaded" class="loading-icon">
-						<NcLoadingIcon
-							:size="44"
-							:title="t('memegen', 'Loading meme')" />
-					</div>
-					<img v-show="imgUrl !== ''"
-						class="meme-image"
-						:src="imgUrl"
-						@load="isLoaded = true">
-				</div>
-				<div class="button-wrapper">
-					<NcButton
-						type="primary"
-						@click="onSubmit">
-						{{ t('memegen','Use this meme') }}
-					</NcButton>
+						:ref="'meme-caption-' + String(n)"
+						:label="'Caption ' + String(n)"
+						:value.sync="captions[n-1]"
+						@update:value="onCapUpdate()" />
 				</div>
 			</div>
-		</NcModal>
-	</div>
+			<div class="meme-renderer">
+				<div v-if="!isLoaded" class="loading-icon">
+					<NcLoadingIcon
+						:size="44"
+						:title="t('memegen', 'Loading meme')" />
+				</div>
+				<img v-show="imgUrl !== ''"
+					class="meme-image"
+					:src="imgUrl"
+					@load="isLoaded = true">
+			</div>
+			<div class="button-wrapper">
+				<NcButton
+					type="primary"
+					@click="onSubmit">
+					{{ t('memegen','Use this meme') }}
+				</NcButton>
+			</div>
+		</div>
+	</NcModal>
 </template>
 <script>
 import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
@@ -165,82 +165,86 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.meme-caps-modal {
-	width: 100%;
-	align-items: center;
-	justify-content: center;
-	padding: 12px 0px 0px 12px;
-}
 
-.meme-caps-dialog {
+.meme-caps-modal {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	padding: 12px 12px 0px 12px;
 	overflow-x: hidden;
 
-	h2 {
-		display: flex;
-		align-items: center;
-	}
-
-	.dialog-wrapper {
-		width: 90%;
-		display: grid;
-		grid-gap: 8px;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		justify-content: center;
-		align-items: center;
-		.input-wrapper {
-			display: flex;
-			align-items: center;
-			width: 100%;
-			flex-direction: column;
-			input {
-				flex-grow: 1;
-			}
-			.input-loading {
-				padding: 0 4px;
-			}
-		}
-	}
-
-	.meme-renderer {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	.modal-content {
 		width: 100%;
-		max-height: 640px;
-		min-height: 640px;
-		object-fit: cover;
+		display: flex;
 		flex-direction: column;
-		padding: 20px 0px 20px 0px;
-		img {
-			max-height: 640px;
-			max-width: 100%;
-			object-fit: cover;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		align-self: center;
+		margin-top: 24px;
+		h2 {
+			text-align: center;
 		}
-
-		.loading-icon {
-			position: absolute;
-			top: 0.5;
-			left: 0.5;
-			display: flex;
+		.dialog-wrapper {
+			width: 90%;
+			display: grid;
+			grid-gap: 8px;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 			justify-content: center;
-			align-items: center;
-			z-index: 1;
-		}
-	}
+			align-content: center;
 
-	.button-wrapper {
-		display: flex;
-		align-items: center;
-		width: 100%;
-		flex-direction: column;
-		padding: 12px 12px 12px 12px;
+			.input-wrapper {
+				display: flex;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				width: 100%;
+				flex-direction: column;
+				input {
+					flex-grow: 1;
+				}
+				.input-loading {
+					padding: 0 4px;
+				}
+			}
+		}
+
+		.meme-renderer {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 90%;
+			max-height: 640px;
+			min-height: 640px;
+			object-fit: cover;
+			flex-direction: column;
+			padding: 20px 0px 20px 0px;
+			img {
+				max-height: 640px;
+				max-width: 100%;
+				object-fit: cover;
+			}
+
+			.loading-icon {
+				position: absolute;
+				top: 0.5;
+				left: 0.5;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 1;
+			}
+		}
+
+		.button-wrapper {
+			display: flex;
+			align-items: center;
+			width: 90%;
+			flex-direction: column;
+			padding: 12px 12px 12px 12px;
+		}
 	}
 }
+
 </style>

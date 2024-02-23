@@ -5,14 +5,11 @@
 		<h2>
 			{{ t('memegen', 'Memegen meme picker') }}
 		</h2>
-		<div v-if="selectedMeme !== null"
-			class="input-wrapper">
-			<GetCapsDialog
-				ref="caps-dialog"
-				:meme="selectedMeme"
-				@submit="onSubmit"
-				@close="onCapsDialogClose" />
-		</div>
+		<GetCapsDialog v-if="selectedMeme !== null"
+			ref="caps-dialog"
+			:meme="selectedMeme"
+			@submit="onSubmit"
+			@close="onCapsDialogClose" />
 		<div class="input-wrapper">
 			<NcTextField
 				ref="memegen-search-input"
