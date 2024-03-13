@@ -8,6 +8,7 @@ OC.L10N.register(
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Uma ferramenta para escolher um modelo de meme e preencher legendas de texto personalizadas usando a funcionalidade Smart Picker.",
     "Caption your meme" : "Legende seu meme",
     "Loading meme" : "Carregando meme",
+    "Use this meme" : "Use esse meme",
     "Loading memes" : "Carregando memes",
     "Memegen meme picker" : "Seletor de memes Memegen",
     "Searching..." : "Pesquisando...",
