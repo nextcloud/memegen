@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.8 - 2024-03-14
+
+### Changed
+* composer and gh workflows updates
+
+### Fixed
+* Fix link generation when submitting
+* Fix attribution logo background size
+* Fix caps dialog overflow behaviour
+* css style fixes
+
+### Added
+* NC 29 compatibility
+
 ## 1.0.6 - 2023-10-02
 ### Fixed
 * Icon colouring in the apps menu
