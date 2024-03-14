@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
 <template>
 	<NcModal container=".meme-picker-content"
-		size="small"
+		size="large"
 		name="Caps dialog"
 		class="meme-caps-modal"
 		:v-show="meme !== null"

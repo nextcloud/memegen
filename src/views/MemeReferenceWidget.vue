@@ -83,10 +83,9 @@ export default {
 		position: relative;
 
 		.image {
-			max-height: 300px;
+			max-height: 400px;
 			max-width: 100%;
 			border-radius: var(--border-radius);
-			margin-top: 8px;
 		}
 
 		.attribution {
