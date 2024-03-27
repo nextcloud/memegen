@@ -1,7 +1,16 @@
 OC.L10N.register(
     "memegen",
     {
+    "Memegen memes" : "Mèmes Memegen",
+    "Memegen meme" : "Mème Memegen",
+    "MemeGen" : "MemeGen",
+    "Caption your meme" : "Légendez votre mème",
+    "Loading meme" : "Chargement du mème",
+    "Use this meme" : "Utiliser ce mème",
+    "Loading memes" : "Chargement des mèmes",
     "Searching..." : "Recherche...",
-    "No results" : "Aucun résultat"
+    "No results" : "Aucun résultat",
+    "No more memes" : "Plus de mème.",
+    "Search memes" : "Rechercher des mèmes"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
