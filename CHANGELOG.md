@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.1.1 - 2025-01-11
+
+### Changed
+* update node modules
+* Bump to NC 32
+
 ## 1.1.0 - 2024-07-25
 
 ### Changed
