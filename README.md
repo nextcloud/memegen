@@ -4,6 +4,8 @@
 -->
 # MemeGen
 
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/memegen)](https://api.reuse.software/info/github.com/nextcloud/memegen)
+
 A Nextcloud Smart Picker integration for generating memes using the [memegen.link](https://memegen.link) API.
 
 This app adds:
