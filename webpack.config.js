@@ -1,5 +1,8 @@
-// SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com>
-// SPDX-License-Identifier: AGPL-3.0-or-later
+/**
+ * SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 const path = require('path')
 // we extend the Nextcloud webpack config
 const webpackConfig = require('@nextcloud/webpack-vue-config')
