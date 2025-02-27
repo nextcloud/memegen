@@ -10,12 +10,12 @@ OC.L10N.register(
     "Loading meme" : "梗圖加載中",
     "Use this meme" : "使用此梗圖",
     "Loading memes" : "梗圖加載中",
+    "Search memes" : "搜尋梗圖",
+    "Powered by Memegen.link" : "由 Memegen.link 提供技術支持",
     "Memegen meme picker" : "Memegen 梗圖選擇器",
     "Searching..." : "正在搜尋 …",
     "No results" : "沒有結果",
     "No more memes" : "沒有更多梗圖",
-    "Search memes" : "搜尋梗圖",
-    "Powered by Memegen.link" : "由 Memegen.link 提供技術支持",
     "Loading meme template" : "梗圖模板加載中"
 },
 "nplurals=1; plural=0;");

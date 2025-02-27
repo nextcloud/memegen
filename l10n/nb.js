@@ -10,12 +10,12 @@ OC.L10N.register(
     "Loading meme" : "Laster meme",
     "Use this meme" : "Bruk denne memen",
     "Loading memes" : "Laster memer",
+    "Search memes" : "Søk memer",
+    "Powered by Memegen.link" : "Drevet av Memegen.link",
     "Memegen meme picker" : "Memegen-memevelger",
     "Searching..." : "Søker...",
     "No results" : "Ingen resultater",
     "No more memes" : "Ingen flere memer",
-    "Search memes" : "Søk memer",
-    "Powered by Memegen.link" : "Drevet av Memegen.link",
     "Loading meme template" : "Laster meme mal"
 },
 "nplurals=2; plural=(n != 1);");

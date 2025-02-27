@@ -10,12 +10,12 @@ OC.L10N.register(
     "Loading meme" : "Cargando meme",
     "Use this meme" : "Utilizar este meme",
     "Loading memes" : "Cargando memes",
+    "Search memes" : "Buscar memes",
+    "Powered by Memegen.link" : "Funciona con Memegen.link",
     "Memegen meme picker" : "Selector de memes Memegen",
     "Searching..." : "Buscando...",
     "No results" : "Sin resultados",
     "No more memes" : "No hay más memes",
-    "Search memes" : "Buscar memes",
-    "Powered by Memegen.link" : "Funciona con Memegen.link",
     "Loading meme template" : "Cargando plantilla de meme"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

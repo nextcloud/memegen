@@ -10,12 +10,12 @@ OC.L10N.register(
     "Loading meme" : "Komiklik yükleniyor",
     "Use this meme" : "Bu meme kullanılsın",
     "Loading memes" : "Komiklikler yükleniyor",
+    "Search memes" : "Komiklik arama",
+    "Powered by Memegen.link" : "Memegen.link tarafından sunuluyor",
     "Memegen meme picker" : "Memegen komiklik seçici",
     "Searching..." : "Aranıyor...",
     "No results" : "Herhangi bir sonuç bulunamadı",
     "No more memes" : "Başka komiklik yok",
-    "Search memes" : "Komiklik arama",
-    "Powered by Memegen.link" : "Memegen.link tarafından sunuluyor",
     "Loading meme template" : "Komiklik kalıbı yükleniyor"
 },
 "nplurals=2; plural=(n > 1);");

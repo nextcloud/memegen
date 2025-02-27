@@ -10,12 +10,12 @@ OC.L10N.register(
     "Loading meme" : "Loading meme",
     "Use this meme" : "بۇ مېمىنى ئىشلىتىڭ",
     "Loading memes" : "خاتىرە يۈكلەۋاتىدۇ",
+    "Search memes" : "ئىزدەش خاتىرىسى",
+    "Powered by Memegen.link" : "Memegen.link تەرىپىدىن ئىشلەنگەن",
     "Memegen meme picker" : "Memegen meme picker",
     "Searching..." : "ئىزدەش ...",
     "No results" : "ھېچقانداق نەتىجە يوق",
     "No more memes" : "بۇنىڭدىن باشقا ئەسلىمە يوق",
-    "Search memes" : "ئىزدەش خاتىرىسى",
-    "Powered by Memegen.link" : "Memegen.link تەرىپىدىن ئىشلەنگەن",
     "Loading meme template" : "Meme قېلىپىنى يۈكلەۋاتىدۇ"
 },
 "nplurals=2; plural=(n != 1);");
