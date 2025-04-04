@@ -18,7 +18,7 @@ use Throwable;
 
 class MemegenService {
 	private array $memeTemplates;
-	private null|ICache $serverCache;
+	private ?ICache $serverCache;
 	private IClient $client;
 
 	public function __construct(
@@ -26,7 +26,7 @@ class MemegenService {
 		IClientService $clientService,
 		private IConfig $config,
 		private IL10N $l10n,
-		ICacheFactory $cacheFactory
+		ICacheFactory $cacheFactory,
 	) {
 		$this->client = $clientService->newClient();
 		$this->serverCache = $cacheFactory->isAvailable() ? $cacheFactory->createDistributed('memegen') : null;
@@ -60,9 +60,9 @@ class MemegenService {
 		$result = [];
 		foreach (array_keys($distanceArr) as $key) {
 			$result[] = [
-				"memeId" => $key,
-				"alt" => $memeTemplates[$key]["name"],
-				"blank_url" => $memeTemplates[$key]["blank_url"],
+				'memeId' => $key,
+				'alt' => $memeTemplates[$key]['name'],
+				'blank_url' => $memeTemplates[$key]['blank_url'],
 				'lines' => $memeTemplates[$key]['lines']
 			];
 		}
@@ -109,7 +109,7 @@ class MemegenService {
 			}
 
 			return $templateResponse;
-		} catch (Exception | Throwable $e) {
+		} catch (Exception|Throwable $e) {
 			$this->logger->warning(
 				'Memegen meme template request error: ' . $e->getMessage(),
 				['app' => Application::APP_ID]
@@ -152,7 +152,7 @@ class MemegenService {
 			try {
 
 				if ($captions === null) {
-					$fullUrl = Application::MEME_SERVICE_URL . '/images/' . $memeId . ".jpg";
+					$fullUrl = Application::MEME_SERVICE_URL . '/images/' . $memeId . '.jpg';
 				} else {
 					$fullUrl = Application::MEME_SERVICE_URL . '/images/' . $memeId;
 					foreach ($captions as $caption) {
@@ -163,7 +163,7 @@ class MemegenService {
 						}
 
 					}
-					$fullUrl .= ".jpg";
+					$fullUrl .= '.jpg';
 				}
 
 
@@ -172,7 +172,7 @@ class MemegenService {
 					'body' => $memeResponse->getBody(),
 					'headers' => $memeResponse->getHeaders(),
 				];
-			} catch (Exception | Throwable $e) {
+			} catch (Exception|Throwable $e) {
 				$this->logger->warning(
 					'Memegen meme content request error: ' . $e->getMessage(),
 					['app' => Application::APP_ID]
