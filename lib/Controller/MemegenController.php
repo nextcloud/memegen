@@ -17,7 +17,7 @@ class MemegenController extends Controller {
 		string $appName,
 		IRequest $request,
 		private MemegenService $memegenService,
-		private ?string $userId
+		private ?string $userId,
 	) {
 		parent::__construct($appName, $request);
 	}
