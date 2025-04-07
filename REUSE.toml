@@ -28,3 +28,15 @@ path = ["img/app.svg", "img/app-dark.svg"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2018-2024 Google LLC"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["img/memegen.logo.png"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020 Jace Browning"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = ["img/ghost.gif"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2013 Google LLC"
+SPDX-License-Identifier = "OFL-1.1-no-RFN"

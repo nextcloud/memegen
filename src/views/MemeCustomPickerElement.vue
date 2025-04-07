@@ -77,23 +77,23 @@
 </template>
 
 <script>
-import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
+import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
 
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
-import PickerResult from '../components/PickerResult.vue'
 import GetCapsDialog from '../components/GetCapsDialog.vue'
+import PickerResult from '../components/PickerResult.vue'
 
 import axios from '@nextcloud/axios'
 import { generateUrl, imagePath } from '@nextcloud/router'
 import { delay } from '../utils.js'
 
-import InfiniteLoading from 'vue-infinite-loading'
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import Vue from 'vue'
+import InfiniteLoading from 'vue-infinite-loading'
 Vue.directive('tooltip', Tooltip)
 
 const LIMIT = 20
@@ -135,14 +135,8 @@ export default {
 			poweredByImgSrc: imagePath('memegen', 'memegen.logo.png'),
 			poweredByTitle: t('memegen', 'Powered by Memegen.link'),
 			LIMIT,
-			sadGifUrl: imagePath('memegen', 'sad.gif'),
+			sadGifUrl: imagePath('memegen', 'ghost.gif'),
 		}
-	},
-
-	computed: {
-	},
-
-	watch: {
 	},
 
 	mounted() {
@@ -317,9 +311,10 @@ export default {
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
+				gap: 1em;
 
 				img {
-					width: 50px;
+					width: 4em;
 				}
 			}
 		}
