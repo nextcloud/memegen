@@ -10,12 +10,12 @@ OC.L10N.register(
     "Loading meme" : "Načítání memu",
     "Use this meme" : "Použít tento mem",
     "Loading memes" : "Načítání memů",
+    "Search memes" : "Hledat memy",
+    "Powered by Memegen.link" : "Založeno na Memegen.link",
     "Memegen meme picker" : "Nástroj pro výběr memu v Memegen",
     "Searching..." : "Hledání…",
     "No results" : "Žádné výsledky",
     "No more memes" : "Žádné další memy",
-    "Search memes" : "Hledat memy",
-    "Powered by Memegen.link" : "Založeno na Memegen.link",
     "Loading meme template" : "Načítání šablony memu"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

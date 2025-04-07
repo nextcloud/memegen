@@ -7,10 +7,10 @@ OC.L10N.register(
     "A meme Smart Picker" : "انتخابگر هوشمند میم",
     "Loading meme" : "در حال بارگیری میم",
     "Loading memes" : "در حال بارگیری میم‌ها",
+    "Search memes" : "جستجوی میم",
+    "Powered by Memegen.link" : "پشتیبانی شده توسط Memegen.link",
     "Memegen meme picker" : "انتخابگر میم Memegen",
     "Searching..." : "در حال جستجوی...",
-    "No results" : "بدون نتیجه",
-    "Search memes" : "جستجوی میم",
-    "Powered by Memegen.link" : "پشتیبانی شده توسط Memegen.link"
+    "No results" : "بدون نتیجه"
 },
 "nplurals=2; plural=(n > 1);");

@@ -10,12 +10,12 @@ OC.L10N.register(
     "Loading meme" : "Меме се учитава",
     "Use this meme" : "Користи овај мим",
     "Loading memes" : "Мемеи се учитавају",
+    "Search memes" : "Претрага мемеа",
+    "Powered by Memegen.link" : "Омогућио Memegen.link",
     "Memegen meme picker" : "Бирач Memegen мемеа",
     "Searching..." : "Претражујем...",
     "No results" : "Нема резултата",
     "No more memes" : "Нема више мемеа",
-    "Search memes" : "Претрага мемеа",
-    "Powered by Memegen.link" : "Омогућио Memegen.link",
     "Loading meme template" : "Учитава се меме шаблон"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

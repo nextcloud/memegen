@@ -85,9 +85,9 @@ export default {
 		position: relative;
 
 		.image {
-			max-height: 400px;
+			max-height: 550px;
 			max-width: 100%;
-			border-radius: var(--border-radius);
+			border-radius: var(--border-radius-element);
 		}
 
 		.attribution {
@@ -99,6 +99,7 @@ export default {
 			padding: 0;
 			border-radius: var(--border-radius);
 			background-color: var(--color-main-background);
+			overflow: hidden;
 			.content {
 				height: 33px;
 				width: 33px;

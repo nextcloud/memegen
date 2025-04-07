@@ -29,7 +29,7 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 		private IURLGenerator $urlGenerator,
 		private MemegenService $memegenService,
 		private ReferenceManager $referenceManager,
-		private ?string $userId
+		private ?string $userId,
 	) {
 
 	}

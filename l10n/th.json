@@ -1,9 +1,9 @@
 { "translations": {
     "Loading meme" : "กำลังโหลด มีม",
     "Loading memes" : "กำลังโหลด มีม",
+    "Search memes" : "ค้นหา มีม",
     "Searching..." : "กำลังค้นหา...",
     "No results" : "ไม่มีผลลัพธ์",
-    "No more memes" : "ไม่มี มีม เหลือแล้ว",
-    "Search memes" : "ค้นหา มีม"
+    "No more memes" : "ไม่มี มีม เหลือแล้ว"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

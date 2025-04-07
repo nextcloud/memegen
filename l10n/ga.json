@@ -8,12 +8,12 @@
     "Loading meme" : "Meme á lódáil",
     "Use this meme" : "Bain úsáid as an meme seo",
     "Loading memes" : "Memes á lódáil",
+    "Search memes" : "Cuardaigh memes",
+    "Powered by Memegen.link" : "Cumhachtaithe ag Memegen.link",
     "Memegen meme picker" : "Memegen roghnóir meme",
     "Searching..." : "Ag cuardach...",
     "No results" : "Gan torthaí",
     "No more memes" : "Uimh memes níos mó",
-    "Search memes" : "Cuardaigh memes",
-    "Powered by Memegen.link" : "Cumhachtaithe ag Memegen.link",
     "Loading meme template" : "Íoslódáil an teimpléad meme"
 },"pluralForm" :"nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 }
