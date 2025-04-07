@@ -1,9 +1,10 @@
 <!--
-SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com>
-SPDX-License-Identifier: CC0-1.0
+  - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: CC0-1.0
 -->
-
 # MemeGen
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/memegen)](https://api.reuse.software/info/github.com/nextcloud/memegen)
 
 A Nextcloud Smart Picker integration for generating memes using the [memegen.link](https://memegen.link) API.
 

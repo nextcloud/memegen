@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2025 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+version = 1
+SPDX-PackageName = "memegen"
+SPDX-PackageSupplier = "Nextcloud <info@nextcloud.com>"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/memegen"
+
+[[annotations]]
+path = ["l10n/**.js", "l10n/**.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023-2025 Nextcloud translators"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = [".tx/config", "composer.json", "composer.lock", "package-lock.json", "package.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["vendor-bin/php-cs-fixer/composer.json", "vendor-bin/php-cs-fixer/composer.lock", "vendor-bin/psalm/composer.json", "vendor-bin/psalm/composer.lock"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["img/app.svg", "img/app-dark.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2018-2024 Google LLC"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["img/memegen.logo.png"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020 Jace Browning"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = ["img/ghost.gif"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2013 Google LLC"
+SPDX-License-Identifier = "OFL-1.1-no-RFN"

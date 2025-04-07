@@ -1,5 +1,7 @@
-<!-- SPDX-FileCopyrightText: Sami Finnilä <sami.finnila@nextcloud.com> -->
-<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<!--
+  - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 <template>
 	<div v-tooltip.top="{ content: meme.name }"
 		class="result"
