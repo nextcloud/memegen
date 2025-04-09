@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.1.2 - 2025-04-09
+
+### Changed
+* Add reuse compliance [#76] @AndyScherzinger
+* maintenance updates [#77] @kyteinsky
+
+
 ## 1.1.1 - 2025-01-11
 
 ### Changed
