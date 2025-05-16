@@ -34,24 +34,29 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 
 	}
 
+	#[\Override]
 	public function getId(): string {
 		return 'memegen_meme';
 	}
 
+	#[\Override]
 	public function getTitle(): string {
 		return $this->l10n->t('Memegen memes');
 	}
 
+	#[\Override]
 	public function getOrder(): int {
 		return 10;
 	}
 
+	#[\Override]
 	public function getIconUrl(): string {
 		return $this->urlGenerator->getAbsoluteURL(
 			$this->urlGenerator->imagePath(Application::APP_ID, 'app-dark.svg')
 		);
 	}
 
+	#[\Override]
 	public function getSupportedSearchProviderIds(): array {
 		return ['memegen-search-memes'];
 
@@ -64,6 +69,7 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	 * @param string $referenceText
 	 * @return bool
 	 */
+	#[\Override]
 	public function matchReference(string $referenceText): bool {
 
 		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
@@ -80,6 +86,7 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	 * @param string $referenceText
 	 * @return IReference|null
 	 */
+	#[\Override]
 	public function resolveReference(string $referenceText): ?IReference {
 		if ($this->matchReference($referenceText)) {
 
@@ -130,10 +137,12 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 		return null;
 	}
 
+	#[\Override]
 	public function getCachePrefix(string $referenceId): string {
 		return $this->userId ?? '';
 	}
 
+	#[\Override]
 	public function getCacheKey(string $referenceId): ?string {
 		return $referenceId;
 	}
