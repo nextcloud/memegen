@@ -35,17 +35,5 @@
 				<referencedClass name="GuzzleHttp\Exception\ClientException" />
 			</errorLevel>
 		</UndefinedClass>
-		<UndefinedDocblockClass>
-			<errorLevel type="suppress">
-				<referencedClass name="Doctrine\DBAL\Schema\Table" />
-                <referencedClass name="Doctrine\DBAL\Schema\Schema" />
-			</errorLevel>
-		</UndefinedDocblockClass>
-		<InvalidClass>
-			<errorLevel type="suppress">
-				<referencedClass name="OCP\Db\Exception" />
-				<referencedClass name="OCP\AppFramework\Db\QBMapper" />
-			</errorLevel>
-		</InvalidClass>
 	</issueHandlers>
 </psalm>

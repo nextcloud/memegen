@@ -14,16 +14,9 @@
 		"lint": "find . -name \\*.php -not -path './vendor*' -print0 | xargs -0 -n1 php -l",
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
-		"psalm": "psalm.phar --no-cache",
-		"psalm:clear": "psalm.phar --clear-cache && psalm.phar --clear-global-cache",
-		"post-install-cmd": [
-			"@composer bin all install --ansi",
-			"composer dump-autoload"
-		],
-		"post-update-cmd": [
-			"@composer bin all update --ansi",
-			"composer dump-autoload"
-		]
+		"psalm": "psalm --no-cache",
+		"psalm:clear": "psalm --clear-cache && psalm --clear-global-cache",
+		"psalm:update-baseline": "psalm --update-baseline"
 	},
 	"config": {
 		"allow-plugins": {
