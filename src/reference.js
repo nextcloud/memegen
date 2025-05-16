@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { registerWidget, registerCustomPickerElement, NcCustomPickerRenderResult } from '@nextcloud/vue/dist/Components/NcRichText.js'
+import { NcCustomPickerRenderResult, registerCustomPickerElement, registerWidget } from '@nextcloud/vue/dist/Components/NcRichText.js'
 
+import { getCSPNonce } from '@nextcloud/auth'
 import { linkTo } from '@nextcloud/router'
-import { getRequestToken } from '@nextcloud/auth'
 
-__webpack_nonce__ = btoa(getRequestToken()) // eslint-disable-line
+__webpack_nonce__ = getCSPNonce() // eslint-disable-line
 __webpack_public_path__ = linkTo('memegen', 'js/') // eslint-disable-line
 
 registerWidget('memegen_meme', async (el, { richObjectType, richObject, accessible }) => {
