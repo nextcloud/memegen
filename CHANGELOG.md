@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.1.3 - 2025-05-16
+
+### Changed
+* chore: bump nc/vue (#81) @kyteinsky
+* chore: update psalm (#84) @kyteinsky
+
+### Fixed
+* fix: update csp nonce fetch method (#83) @kyteinsky
+
+
 ## 1.1.2 - 2025-04-09
 
 ### Changed
