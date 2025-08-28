@@ -5,7 +5,7 @@ OC.L10N.register(
     "Memegen meme" : "Memegen komikliği",
     "MemeGen" : "MemeGen",
     "A meme Smart Picker" : "Akıllı komiklik seçici ",
-    "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Akıllı seçici ile bir komiklik kalıbı seçmek ve özel metin alt yazılarını doldurmak için kullanılan bir araç.",
+    "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Akıllı seçici ile bir komiklik kalıbı seçmek ve özel yazı alt yazılarını doldurmak için kullanılan bir araç.",
     "Caption your meme" : "Komikliğinize yazı ekleyin",
     "Loading meme" : "Komiklik yükleniyor",
     "Use this meme" : "Bu meme kullanılsın",
