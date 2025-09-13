@@ -1,0 +1,19 @@
+{ "translations": {
+    "Memegen memes" : "Memegen xotiralari",
+    "Memegen meme" : "Memegen xotira",
+    "MemeGen" : "MemeGen",
+    "A meme Smart Picker" : "Aqlli mem tanlash",
+    "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Aqlli tanlov funksiyasidan foydalangan holda mem shablonini tanlash va maxsus matn taglavhalarini to'ldirish uchun vosita.",
+    "Caption your meme" : "Memingizga sarlavha qo'ying",
+    "Loading meme" : "Mem yuklanmoqda",
+    "Use this meme" : "Ushbu memdan foydalaning",
+    "Loading memes" : "Memlar yuklanmoqda",
+    "Search memes" : "Memlarni qidirish",
+    "Powered by Memegen.link" : "Memegen.link tomonidan quvvatlanadi",
+    "Memegen meme picker" : "Memegen mem tanlash",
+    "Searching..." : "Izlanmoqda...",
+    "No results" : "Natija yo'q",
+    "No more memes" : "Boshqa mamlar yo'q",
+    "Loading meme template" : "Mem namunalarini yuklash"
+},"pluralForm" :"nplurals=1; plural=0;"
+}
