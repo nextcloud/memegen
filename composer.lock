@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff1874d3b0fce881d53be4c7ee46b4e2",
+    "content-hash": "ec2be8333908c6409d5d9050e098df2a",
     "packages": [
         {
             "name": "bamarni/composer-bin-plugin",
@@ -71,12 +71,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "745d3eddec9836625ce557dc5817bc49c33aa8e1"
+                "reference": "921b790da9b3a7f7b8e9fe41f9343cd832349c50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/745d3eddec9836625ce557dc5817bc49c33aa8e1",
-                "reference": "745d3eddec9836625ce557dc5817bc49c33aa8e1",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/921b790da9b3a7f7b8e9fe41f9343cd832349c50",
+                "reference": "921b790da9b3a7f7b8e9fe41f9343cd832349c50",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "32.0.0-dev"
+                    "dev-master": "33.0.0-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -112,7 +112,7 @@
                 "issues": "https://github.com/nextcloud-deps/ocp/issues",
                 "source": "https://github.com/nextcloud-deps/ocp/tree/master"
             },
-            "time": "2025-05-16T00:52:18+00:00"
+            "time": "2025-11-13T00:52:15+00:00"
         },
         {
             "name": "psr/clock",
@@ -324,7 +324,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0 || ^8.1 || ^8.2 || ^8.3 || ^8.4"
+        "php": "^8.2 || ^8.3 || ^8.4"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
