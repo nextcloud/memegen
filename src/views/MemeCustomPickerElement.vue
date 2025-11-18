@@ -15,11 +15,11 @@
 		<div class="input-wrapper">
 			<NcTextField
 				ref="memegen-search-input"
-				:value.sync="searchQuery"
+				v-model="searchQuery"
 				:show-trailing-button="searchQuery !== ''"
 				:label="inputPlaceholder"
 				@trailing-button-click="onClear"
-				@update:value="onInput">
+				@update:model-value="onInput">
 				<template #trailing-button-icon>
 					<CloseIcon :size="16" />
 				</template>
@@ -80,21 +80,17 @@
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
 
-import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 
 import GetCapsDialog from '../components/GetCapsDialog.vue'
 import PickerResult from '../components/PickerResult.vue'
 
 import axios from '@nextcloud/axios'
 import { generateUrl, imagePath } from '@nextcloud/router'
+import InfiniteLoading from 'v3-infinite-loading/lib/v3-infinite-loading.es.js'
 import { delay } from '../utils.js'
-
-import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
-import Vue from 'vue'
-import InfiniteLoading from 'vue-infinite-loading'
-Vue.directive('tooltip', Tooltip)
 
 const LIMIT = 20
 
@@ -159,7 +155,12 @@ export default {
 			this.selectedMeme = meme
 		},
 		onSubmit(extUrl) {
-			this.$emit('submit', extUrl)
+			this.$el.dispatchEvent(
+				new CustomEvent('submit', {
+					detail: extUrl,
+					bubbles: true,
+				}),
+			)
 		},
 		onInput() {
 			delay(() => {
@@ -220,10 +221,10 @@ export default {
 				.catch((error) => {
 					console.debug('memegen search request error', error)
 					if (state !== null) {
-						state.complete()
+						state.error()
 					}
 				})
-				.then(() => {
+				.finally(() => {
 					this.searching = false
 				})
 		},
@@ -250,7 +251,7 @@ export default {
 	.attribution {
 		position: absolute;
 		bottom: 4px;
-		left: 16px;
+		inset-inline-start: 16px;
 		height: 30px;
 		border-radius: var(--border-radius);
 		border: 2px solid var(--color-background-darker);
@@ -294,7 +295,7 @@ export default {
 		scrollbar-width: auto;
 		scrollbar-color: var(--color-primary);
 		margin-top: 12px;
-		padding-right: 16px;
+		padding-inline-end: 16px;
 
 		.result {
 			&:hover {

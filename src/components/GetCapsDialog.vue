@@ -21,9 +21,9 @@
 					<NcTextField v-if="captions.length > 0"
 						:key="n"
 						:ref="'meme-caption-' + String(n)"
+						v-model="captions[n-1]"
 						:label="'Caption ' + String(n)"
-						:value.sync="captions[n-1]"
-						@update:value="onCapUpdate()" />
+						@update:model-value="onCapUpdate()" />
 				</div>
 			</div>
 			<div class="meme-renderer">
@@ -35,11 +35,12 @@
 				<img v-show="imgUrl !== ''"
 					class="meme-image"
 					:src="imgUrl"
+					:alt="meme.alt"
 					@load="isLoaded = true">
 			</div>
 			<div class="button-wrapper">
 				<NcButton
-					type="primary"
+					variant="primary"
 					@click="onSubmit">
 					{{ t('memegen','Use this meme') }}
 				</NcButton>
@@ -47,12 +48,13 @@
 		</div>
 	</NcModal>
 </template>
+
 <script>
-import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { generateUrl } from '@nextcloud/router'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcModal from '@nextcloud/vue/components/NcModal'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 import { delay } from '../utils.js'
 
 export default {
@@ -239,7 +241,7 @@ export default {
 			.loading-icon {
 				position: absolute;
 				top: 0.5;
-				left: 0.5;
+				inset-inline-start: 0.5;
 				display: flex;
 				justify-content: center;
 				align-items: center;
