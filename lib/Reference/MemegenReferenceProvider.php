@@ -10,22 +10,20 @@ namespace OCA\Memegen\Reference;
 use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Memegen\AppInfo\Application;
 use OCA\Memegen\Service\MemegenService;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
 use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OCP\Collaboration\Reference\Reference;
-use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
-use Psr\Log\LoggerInterface;
 
 class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements ISearchableReferenceProvider {
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_meme';
 
 	public function __construct(
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		private IL10N $l10n,
-		private LoggerInterface $logger,
 		private IURLGenerator $urlGenerator,
 		private MemegenService $memegenService,
 		private ReferenceManager $referenceManager,
@@ -71,8 +69,7 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	 */
 	#[\Override]
 	public function matchReference(string $referenceText): bool {
-
-		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
+		$adminLinkPreviewEnabled = $this->appConfig->getAppValueString('link_preview_enabled', '1', true) === '1';
 		if (!$adminLinkPreviewEnabled) {
 			return false;
 		}
