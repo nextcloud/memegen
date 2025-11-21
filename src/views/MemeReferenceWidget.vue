@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 
 import { imagePath } from '@nextcloud/router'
 
@@ -92,7 +92,7 @@ export default {
 
 		.attribution {
 			position: absolute;
-			left: 0;
+			inset-inline-start: 0;
 			bottom: 0;
 			height: 33px;
 			width: 33px;
