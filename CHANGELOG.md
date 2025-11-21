@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.0 - 2025-11-21
+
+### Added
+* use lazy config values (#95) @kyteinsky
+
+### Changed
+* migrate to vue3 (#96) @kyteinsky
+* drop NC 32 (#96) @kyteinsky
+* maintenance updates (#96) @kyteinsky
+
+
 ## 1.1.3 - 2025-05-16
 
 ### Changed
@@ -23,8 +34,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## 1.1.2 - 2025-04-09
 
 ### Changed
-* Add reuse compliance [#76] @AndyScherzinger
-* maintenance updates [#77] @kyteinsky
+* Add reuse compliance (#76) @AndyScherzinger
+* maintenance updates (#77) @kyteinsky
 
 
 ## 1.1.1 - 2025-01-11
