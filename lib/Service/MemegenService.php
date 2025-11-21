@@ -13,21 +13,16 @@ use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
 use OCP\ICache;
 use OCP\ICacheFactory;
-use OCP\IConfig;
-use OCP\IL10N;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
 class MemegenService {
-	private array $memeTemplates;
 	private ?ICache $serverCache;
 	private IClient $client;
 
 	public function __construct(
 		private LoggerInterface $logger,
 		IClientService $clientService,
-		private IConfig $config,
-		private IL10N $l10n,
 		ICacheFactory $cacheFactory,
 	) {
 		$this->client = $clientService->newClient();
