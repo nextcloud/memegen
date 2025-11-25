@@ -13,7 +13,7 @@ OC.L10N.register(
     "Search memes" : "Hledat memy",
     "Powered by Memegen.link" : "Založeno na Memegen.link",
     "Memegen meme picker" : "Nástroj pro výběr memu v Memegen",
-    "Searching..." : "Hledání…",
+    "Searching..." : "Hledání …",
     "No results" : "Žádné výsledky",
     "No more memes" : "Žádné další memy",
     "Loading meme template" : "Načítání šablony memu"
