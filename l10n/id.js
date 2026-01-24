@@ -1,6 +1,21 @@
 OC.L10N.register(
     "memegen",
     {
-    "No results" : "Tidak ada hasil"
+    "Memegen memes" : "Memegen meme",
+    "Memegen meme" : "Generator meme Memegen",
+    "MemeGen" : "MemeGen",
+    "A meme Smart Picker" : "Smart Picker meme",
+    "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Alat untuk memilih templat meme dan mengisi teks keterangan khusus menggunakan fungsi Smart Picker.",
+    "Caption your meme" : "Beri keterangan pada meme Anda",
+    "Loading meme" : "Memuat meme",
+    "Use this meme" : "Gunakan meme ini",
+    "Loading memes" : "Memuat meme",
+    "Search memes" : "Cari meme",
+    "Powered by Memegen.link" : "Didukung oleh Memegen.link",
+    "Memegen meme picker" : "Pemilih meme Memegen",
+    "Searching..." : "Mencari...",
+    "No results" : "Tidak ada hasil",
+    "No more memes" : "Tidak ada meme lagi",
+    "Loading meme template" : "Memuat templat meme"
 },
 "nplurals=1; plural=0;");
