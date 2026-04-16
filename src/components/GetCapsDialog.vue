@@ -194,14 +194,13 @@ export default {
 		align-items: center;
 		justify-items: center;
 		align-self: center;
-		margin-top: 24px;
 		h2 {
 			text-align: center;
 		}
 		.dialog-wrapper {
 			width: 90%;
 			display: grid;
-			grid-gap: 8px;
+			gap: 8px;
 			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 			justify-content: center;
 			align-content: center;
