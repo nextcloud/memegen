@@ -1,0 +1,198 @@
+repository_link: https://github.com/nextcloud/memegen
+title: Change Log
+description: All notable changes to this project will be documented in this file.
+markdown_preamble: |-
+  <!--
+    - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
+    - SPDX-License-Identifier: AGPL-3.0-or-later
+  -->
+  # Change Log
+  All notable changes to this project will be documented in this file.
+
+  The format is based on [Keep a Changelog](http://keepachangelog.com/)
+  and this project adheres to [Semantic Versioning](http://semver.org/).
+release_agent:
+  ignore_commits:
+  - author: "^pre-commit-ci\\[bot\\]$"
+  - author: "^Nextcloud-bot$"
+  - email: bot@nextcloud.com
+  - author: "^dependabot\\[bot\\]$"
+  - message: "^chore\\(changelog\\):"
+entries:
+- version: 2.0.0
+  release_date: '2025-11-21'
+  sections:
+  - name: Added
+    items:
+    - text: use lazy config values
+      authors:
+      - kyteinsky
+      issue_number: 95
+  - name: Changed
+    items:
+    - text: migrate to vue3
+      authors:
+      - kyteinsky
+      issue_number: 96
+    - text: drop NC 32
+      authors:
+      - kyteinsky
+      issue_number: 96
+    - text: maintenance updates
+      authors:
+      - kyteinsky
+      issue_number: 96
+- version: 1.1.3
+  release_date: '2025-05-16'
+  sections:
+  - name: Changed
+    items:
+    - text: bump nc/vue
+      authors:
+      - kyteinsky
+      issue_number: 81
+    - text: update psalm
+      authors:
+      - kyteinsky
+      issue_number: 84
+  - name: Fixed
+    items:
+    - text: update csp nonce fetch method
+      authors:
+      - kyteinsky
+      issue_number: 83
+- version: 1.1.2
+  release_date: '2025-04-09'
+  sections:
+  - name: Changed
+    items:
+    - text: Add reuse compliance
+      authors:
+      - AndyScherzinger
+      issue_number: 76
+    - text: maintenance updates
+      authors:
+      - kyteinsky
+      issue_number: 77
+- version: 1.1.1
+  release_date: '2025-01-11'
+  sections:
+  - name: Changed
+    items:
+    - text: update node modules
+      authors: []
+      issue_number:
+    - text: Bump to NC 32
+      authors: []
+      issue_number:
+- version: 1.1.0
+  release_date: '2024-07-25'
+  sections:
+  - name: Changed
+    items:
+    - text: composer and gh workflows updates
+      authors: []
+      issue_number:
+    - text: Bump to NC 30
+      authors: []
+      issue_number:
+- version: 1.0.8
+  release_date: '2024-03-14'
+  sections:
+  - name: Added
+    items:
+    - text: NC 29 compatibility
+      authors: []
+      issue_number:
+  - name: Changed
+    items:
+    - text: composer and gh workflows updates
+      authors: []
+      issue_number:
+  - name: Fixed
+    items:
+    - text: Fix link generation when submitting
+      authors: []
+      issue_number:
+    - text: Fix attribution logo background size
+      authors: []
+      issue_number:
+    - text: Fix caps dialog overflow behaviour
+      authors: []
+      issue_number:
+    - text: css style fixes
+      authors: []
+      issue_number:
+- version: 1.0.6
+  release_date: '2023-10-02'
+  sections:
+  - name: Added
+    items:
+    - text: Translations
+      authors: []
+      issue_number:
+  - name: Fixed
+    items:
+    - text: Icon colouring in the apps menu
+      authors: []
+      issue_number:
+- version: 1.0.5
+  release_date: '2023-09-26'
+  sections:
+  - name: Fixed
+    items:
+    - text: Remove unnecessary files from the Appstore build
+      authors: []
+      issue_number:
+    - text: Remove unnecessary search provider
+      authors: []
+      issue_number:
+    - text: Visible name of the app
+      authors: []
+      issue_number:
+- version: 1.0.4
+  release_date: '2023-09-22'
+  sections:
+  - name: Fixed
+    items:
+    - text: More errors in the Makefile
+      authors: []
+      issue_number:
+- version: 1.0.3
+  release_date: '2023-09-22'
+  sections:
+  - name: Fixed
+    items:
+    - text: More app skeleton-creator errors in the Makefile
+      authors: []
+      issue_number:
+- version: 1.0.2
+  release_date: '2023-09-21'
+  sections:
+  - name: Fixed
+    items:
+    - text: Github actions error
+      authors: []
+      issue_number:
+- version: 1.0.1
+  release_date: '2023-09-21'
+  sections:
+  - name: Fixed
+    items:
+    - text: Versioning
+      authors: []
+      issue_number:
+    - text: Licensing
+      authors: []
+      issue_number:
+    - text: Build errors
+      authors: []
+      issue_number:
+- version: 1.0.0
+  release_date: '2023-09-20'
+  sections:
+  - name: Added
+    items:
+    - text: the app
+      authors: []
+      issue_number:
