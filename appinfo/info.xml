@@ -9,7 +9,7 @@
     <name>MemeGen</name>
     <summary>A meme Smart Picker</summary>
     <description><![CDATA[A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality.]]></description>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <licence>agpl</licence>
     <author mail="sami.finnila@nextcloud.com" >Sami Finnilä</author>
     <namespace>Memegen</namespace>

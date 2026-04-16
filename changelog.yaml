@@ -19,6 +19,18 @@ release_agent:
   - author: "^dependabot\\[bot\\]$"
   - message: "^chore\\(changelog\\):"
 entries:
+- version: 2.0.1
+  release_date: '2026-04-16'
+  sections:
+  - name: Changed
+    items:
+    - text: maintenance updates
+      authors:
+      - kyteinsky
+      issue_number: 130
+    - text: bump max NC version to 34
+      authors:
+      - kyteinsky
 - version: 2.0.0
   release_date: '2025-11-21'
   sections:
