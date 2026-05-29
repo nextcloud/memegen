@@ -8,6 +8,7 @@ OC.L10N.register(
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Инструмент для выбора шаблона мема и заполнения произвольных текстовых подписей с помощью функции Smart Picker.",
     "Caption your meme" : "Подпишите ваш мем",
     "Loading meme" : "Загрузка мема",
+    "Use this meme" : "Использовать этот мем",
     "Loading memes" : "Загрузка мемов",
     "Search memes" : "Поиск мемов",
     "Powered by Memegen.link" : "Создано Memegen.link",
