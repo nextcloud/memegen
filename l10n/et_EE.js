@@ -14,8 +14,8 @@ OC.L10N.register(
     "Powered by Memegen.link" : "Teenust pakub Memegen.link",
     "Memegen meme picker" : "Memegeni meemide valija",
     "Searching..." : "Otsin...",
-    "No results" : "Vasteid ei leitud",
-    "No more memes" : "Rohkem meme ei leidu",
+    "No results" : "Vasteid ei leidu",
+    "No more memes" : "Rohkem meeme ei leidu",
     "Loading meme template" : "Laadin meemi malli"
 },
 "nplurals=2; plural=(n != 1);");
