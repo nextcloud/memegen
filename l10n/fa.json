@@ -3,12 +3,17 @@
     "Memegen meme" : "میم Memegen",
     "MemeGen" : "MemeGen",
     "A meme Smart Picker" : "انتخابگر هوشمند میم",
+    "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "ابزاری برای انتخاب قالب meme و پرکردن عنوان‌های متنی سفارشی با استفاده از قابلیت Smart Picker.",
+    "Caption your meme" : "برای meme خود عنوان بنویسید",
     "Loading meme" : "در حال بارگیری میم",
+    "Use this meme" : "استفاده از این meme",
     "Loading memes" : "در حال بارگیری میم‌ها",
     "Search memes" : "جستجوی میم",
     "Powered by Memegen.link" : "پشتیبانی شده توسط Memegen.link",
     "Memegen meme picker" : "انتخابگر میم Memegen",
     "Searching..." : "در حال جستجوی...",
-    "No results" : "بدون نتیجه"
+    "No results" : "بدون نتیجه",
+    "No more memes" : "meme دیگری وجود ندارد",
+    "Loading meme template" : "در حال بارگذاری قالب meme"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }
