@@ -7,6 +7,7 @@ OC.L10N.register(
     "Loading memes" : "A carregar memes",
     "Search memes" : "Procurar memes",
     "Powered by Memegen.link" : "Desenvolvido por Memegen.link",
+    "Memegen meme picker" : "Seletor de memes do Memegen",
     "Searching..." : "A procurar...",
     "No results" : "Sem resultados",
     "No more memes" : "Sem mais memes",
