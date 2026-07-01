@@ -1,6 +1,8 @@
 OC.L10N.register(
     "memegen",
     {
+    "Memegen memes" : "Memes do Memegen",
+    "A meme Smart Picker" : "Um Seletor Inteligente de memes",
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Uma ferramenta para escolher um modelo meme e preencher as legendas de texto personalizadas utilizando a funcionalidade Smart Picker.",
     "Caption your meme" : "Legende o seu meme",
     "Loading meme" : "A carregar meme",
