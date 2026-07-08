@@ -1,8 +1,21 @@
 OC.L10N.register(
     "memegen",
     {
+    "Memegen memes" : "„Memegen“ sugeneruoti memai",
+    "Memegen meme" : "„Memegen“ sugeneruotas memas",
+    "MemeGen" : " „MemeGen“",
+    "A meme Smart Picker" : "Memo „Išmanusis rinkiklis“",
+    "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Įrankis, skirtas pasirinkti memo šabloną ir įrašyti pasirinktinį tekstą naudojant „Išmaniojo rinkiklio“ funkciją.",
+    "Caption your meme" : "Parašykite memui antraštę",
+    "Loading meme" : "Įkeliamas memas",
+    "Use this meme" : "Naudoti šitą memą",
+    "Loading memes" : "Įkeliami memai",
+    "Search memes" : "Ieškoti memų",
     "Powered by Memegen.link" : "Veikia su Memegen.link",
+    "Memegen meme picker" : "„Memegen“ memo rinkiklis",
     "Searching..." : "Ieškoma...",
-    "No results" : "Nieko nerasta"
+    "No results" : "Nieko nerasta",
+    "No more memes" : "Daugiau jokių memų",
+    "Loading meme template" : "Įkeliamas memo šablonas"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");
