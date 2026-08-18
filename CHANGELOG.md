@@ -8,6 +8,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.2 - 2026-08-19
+
+### Changed
+- add NC 35 support ([#137](https://github.com/nextcloud/memegen/pull/137)) @kyteinsky
+- import from @nextcloud/vue/functions/registerReference ([#136](https://github.com/nextcloud/memegen/pull/136)) @max-nextcloud
+- maintenance updates ([#138](https://github.com/nextcloud/memegen/pull/138)) @kyteinsky
+
+
 ## 2.0.1 - 2026-04-16
 
 ### Changed
