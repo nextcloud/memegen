@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab736c80e96acfb92eae40934aa0bf99",
+    "content-hash": "66569884299c20dbd60255c7d4b9cf34",
     "packages": [
         {
             "name": "bamarni/composer-bin-plugin",
@@ -71,16 +71,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "384c4832180988e2dc6acb444a732074275253f6"
+                "reference": "ca44691042e21e3a20c8e44163146f0290295e71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/384c4832180988e2dc6acb444a732074275253f6",
-                "reference": "384c4832180988e2dc6acb444a732074275253f6",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/ca44691042e21e3a20c8e44163146f0290295e71",
+                "reference": "ca44691042e21e3a20c8e44163146f0290295e71",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4 || ~8.5",
+                "php": "~8.2 || ~8.3 || ~8.4 || ~8.5",
                 "psr/clock": "^1.0",
                 "psr/container": "^2.0.2",
                 "psr/event-dispatcher": "^1.0",
@@ -111,7 +111,7 @@
                 "issues": "https://github.com/nextcloud-deps/ocp/issues",
                 "source": "https://github.com/nextcloud-deps/ocp/tree/stable33"
             },
-            "time": "2026-04-16T01:27:31+00:00"
+            "time": "2026-08-08T00:47:59+00:00"
         },
         {
             "name": "psr/clock",
@@ -323,7 +323,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2 || ^8.3 || ^8.4"
+        "php": "^8.2 || ^8.3 || ^8.4 || ^8.5"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
