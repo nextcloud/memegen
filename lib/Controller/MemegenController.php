@@ -34,7 +34,6 @@ class MemegenController extends Controller {
 	 */
 	public function getMemeContent(string $memeId, ?array $captions): DataDisplayResponse {
 
-
 		$memeResponse = $this->memegenService->getMemeContent($memeId, $captions);
 		if ($memeResponse !== null && isset($memeResponse['body'], $memeResponse['headers'])) {
 			$response = new DataDisplayResponse(

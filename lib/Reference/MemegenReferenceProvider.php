@@ -57,9 +57,7 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 	#[\Override]
 	public function getSupportedSearchProviderIds(): array {
 		return ['memegen-search-memes'];
-
 	}
-
 
 	/**
 	 * Given a referenceText, determine if this provider can resolve it.
@@ -75,7 +73,6 @@ class MemegenReferenceProvider extends ADiscoverableReferenceProvider implements
 		}
 		return $this->parseMemeUrl($referenceText) !== null;
 	}
-
 
 	/**
 	 * Given a referenceText, return a reference object.

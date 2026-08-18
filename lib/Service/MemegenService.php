@@ -47,7 +47,6 @@ class MemegenService {
 
 			$distanceArr[$memeShortName] = levenshtein(strtoupper($query), strtoupper($memeInfo['name']), 0, 1, 1);
 
-
 		}
 
 		asort($distanceArr);
@@ -65,7 +64,6 @@ class MemegenService {
 		}
 
 		return $result;
-
 	}
 
 	/**
@@ -115,7 +113,6 @@ class MemegenService {
 		}
 	}
 
-
 	/**
 	 * Return all meme info contained within the memeTemplates array based on the meme name.
 	 *
@@ -162,7 +159,6 @@ class MemegenService {
 					}
 					$fullUrl .= '.jpg';
 				}
-
 
 				$memeResponse = $this->client->get($fullUrl);
 				return [
