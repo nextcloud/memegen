@@ -9,7 +9,7 @@ import {
 	NcCustomPickerRenderResult,
 	registerCustomPickerElement,
 	registerWidget,
-} from '@nextcloud/vue/components/NcRichText'
+} from '@nextcloud/vue/functions/registerReference'
 
 __webpack_nonce__ = getCSPNonce() // eslint-disable-line
 __webpack_public_path__ = linkTo('memegen', 'js/') // eslint-disable-line
