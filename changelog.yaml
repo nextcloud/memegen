@@ -19,6 +19,23 @@ release_agent:
   - author: "^dependabot\\[bot\\]$"
   - message: "^chore\\(changelog\\):"
 entries:
+- version: 2.0.2
+  release_date: '2026-08-19'
+  sections:
+  - name: Changed
+    items:
+    - text: add NC 35 support
+      authors:
+      - kyteinsky
+      issue_number: 137
+    - text: import from @nextcloud/vue/functions/registerReference
+      authors:
+      - max-nextcloud
+      issue_number: 136
+    - text: maintenance updates
+      authors:
+      - kyteinsky
+      issue_number: 138
 - version: 2.0.1
   release_date: '2026-04-16'
   sections:
