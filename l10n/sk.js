@@ -16,6 +16,6 @@ OC.L10N.register(
     "Searching..." : "Vyhľadávam...",
     "No results" : "Žiadne výsledky",
     "No more memes" : "Žiadne ďalšie mémy",
-    "Loading meme template" : "Náhravanie šablóny mému"
+    "Loading meme template" : "Načítava sa šablóna mému"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");
