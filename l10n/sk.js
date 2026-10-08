@@ -6,7 +6,7 @@ OC.L10N.register(
     "MemeGen" : "MemeGen",
     "A meme Smart Picker" : "Inteligentný výber mému",
     "A tool for picking a meme template and filling in custom text captions using the Smart Picker functionality." : "Nástroj na výber šablóny mému a vyplnenie vlastných textových popisov pomocou funkcie Smart Picker.",
-    "Caption your meme" : "Označte svoj mém textom",
+    "Caption your meme" : "Pridajte text svojmu mému",
     "Loading meme" : "Načítavam mém",
     "Use this meme" : "Použiť tento mém",
     "Loading memes" : "Načítavam mémy",
