@@ -16,7 +16,7 @@
     <category>integration</category>
     <website>https://github.com/nextcloud/memegen</website>
     <bugs>https://github.com/nextcloud/memegen/issues</bugs>
-    <screenshot>https://github.com/MB-Finski/memegen/assets/64466176/eb4e8244-d5f6-4408-9d85-6a0440c5b3b3</screenshot>
+    <screenshot>https://github.com/nextcloud/memegen/assets/64466176/eb4e8244-d5f6-4408-9d85-6a0440c5b3b3</screenshot>
     <dependencies>
         <nextcloud min-version="33" max-version="35"/>
     </dependencies>

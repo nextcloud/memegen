@@ -14,9 +14,9 @@ This app adds:
 - A custom SmartPicker dialog to generate memes with user provided captions
 
 
-![memegen_2](https://github.com/MB-Finski/memegen/assets/64466176/353e1a73-f16b-4c3d-a8c6-b5244728d45c)
+![memegen_2](https://github.com/nextcloud/memegen/assets/64466176/353e1a73-f16b-4c3d-a8c6-b5244728d45c)
 
-![memegen_1](https://github.com/MB-Finski/memegen/assets/64466176/eb4e8244-d5f6-4408-9d85-6a0440c5b3b3)
+![memegen_1](https://github.com/nextcloud/memegen/assets/64466176/eb4e8244-d5f6-4408-9d85-6a0440c5b3b3)
 
 
 ## 🛠️ State of maintenance
