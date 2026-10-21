@@ -5,7 +5,7 @@
   "author": "Sami Finnilä <sami.finnila@nextcloud.com>",
   "contributors": [],
   "bugs": {
-    "url": "https://github.com/nextcloud/memegen"
+    "url": "https://github.com/nextcloud/memegen/issues"
   },
   "license": "AGPL-3.0-or-later",
   "private": true,
