@@ -8,122 +8,153 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
 ## 2.0.2 - 2026-08-19
 
-### Changed
-- add NC 35 support ([#137](https://github.com/nextcloud/memegen/pull/137)) @kyteinsky
-- import from @nextcloud/vue/functions/registerReference ([#136](https://github.com/nextcloud/memegen/pull/136)) @max-nextcloud
-- maintenance updates ([#138](https://github.com/nextcloud/memegen/pull/138)) @kyteinsky
+### Added
 
+- Added support for Nextcloud 35
+
+### Changed
+
+- Import from @nextcloud/vue/functions/registerReference
+- Update dependencies
 
 ## 2.0.1 - 2026-04-16
 
-### Changed
-- maintenance updates ([#130](https://github.com/nextcloud/memegen/pull/130)) @kyteinsky
-- bump max NC version to 34 @kyteinsky
+### Added
 
+- Added support for Nextcloud 34
+
+### Changed
+
+- Remove the top margin of the caption dialog
+- Update the GitHub workflows
+- Update dependencies
 
 ## 2.0.0 - 2025-11-21
 
 ### Added
-- use lazy config values ([#95](https://github.com/nextcloud/memegen/pull/95)) @kyteinsky
+
+- Added support for Nextcloud 33
+- Use lazy config values
 
 ### Changed
-- migrate to vue3 ([#96](https://github.com/nextcloud/memegen/pull/96)) @kyteinsky
-- drop NC 32 ([#96](https://github.com/nextcloud/memegen/pull/96)) @kyteinsky
-- maintenance updates ([#96](https://github.com/nextcloud/memegen/pull/96)) @kyteinsky
 
+- Migrate to Vue 3
+- Update the GitHub workflows
+- Update dependencies
+
+### Removed
+
+- Nextcloud 27 to 32 support
 
 ## 1.1.3 - 2025-05-16
 
 ### Changed
-- bump nc/vue ([#81](https://github.com/nextcloud/memegen/pull/81)) @kyteinsky
-- update psalm ([#84](https://github.com/nextcloud/memegen/pull/84)) @kyteinsky
+
+- Update Psalm
+- Update dependencies
 
 ### Fixed
-- update csp nonce fetch method ([#83](https://github.com/nextcloud/memegen/pull/83)) @kyteinsky
 
+- Update the CSP nonce fetch method
 
 ## 1.1.2 - 2025-04-09
 
 ### Changed
-- Add reuse compliance ([#76](https://github.com/nextcloud/memegen/pull/76)) @AndyScherzinger
-- maintenance updates ([#77](https://github.com/nextcloud/memegen/pull/77)) @kyteinsky
 
+- Add REUSE compliance
+- Show the meme in the link preview up to 550 px high
+- Update the GitHub workflows
+- Update dependencies
 
 ## 1.1.1 - 2025-01-11
 
-### Changed
-- update node modules
-- Bump to NC 32
+### Added
 
+- Added support for Nextcloud 31 and 32
+
+### Changed
+
+- Update dependencies
 
 ## 1.1.0 - 2024-07-25
 
-### Changed
-- composer and gh workflows updates
-- Bump to NC 30
+### Added
 
+- Added support for Nextcloud 30
+
+### Changed
+
+- Update the GitHub workflows
+- Update dependencies
 
 ## 1.0.8 - 2024-03-14
 
 ### Added
-- NC 29 compatibility
+
+- Added support for Nextcloud 29
 
 ### Changed
-- composer and gh workflows updates
+
+- Update the GitHub workflows
+- Update dependencies
 
 ### Fixed
+
 - Fix link generation when submitting
 - Fix attribution logo background size
 - Fix caps dialog overflow behaviour
-- css style fixes
-
+- CSS style fixes
 
 ## 1.0.6 - 2023-10-02
 
 ### Added
+
 - Translations
 
 ### Fixed
-- Icon colouring in the apps menu
 
+- Icon colouring in the apps menu
 
 ## 1.0.5 - 2023-09-26
 
 ### Fixed
-- Remove unnecessary files from the Appstore build
-- Remove unnecessary search provider
-- Visible name of the app
 
+- Remove unnecessary files from the App Store build
+- Remove the unnecessary search provider
+- Visible name of the app
 
 ## 1.0.4 - 2023-09-22
 
 ### Fixed
-- More errors in the Makefile
 
+- More errors in the Makefile
 
 ## 1.0.3 - 2023-09-22
 
 ### Fixed
-- More app skeleton-creator errors in the Makefile
 
+- More app skeleton-creator errors in the Makefile
 
 ## 1.0.2 - 2023-09-21
 
 ### Fixed
-- Github actions error
 
+- GitHub Actions error
 
 ## 1.0.1 - 2023-09-21
 
 ### Fixed
+
 - Versioning
 - Licensing
 - Build errors
 
-
 ## 1.0.0 - 2023-09-20
 
 ### Added
-- the app
+
+- Initial release for Nextcloud 27 and 28
