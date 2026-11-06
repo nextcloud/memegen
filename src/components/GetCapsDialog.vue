@@ -7,8 +7,7 @@
 		size="large"
 		name="Caps dialog"
 		class="meme-caps-modal"
-		:v-show="meme !== null"
-		:out-transition="true"
+		:outTransition="true"
 		@close="onClose">
 		<div class="modal-content">
 			<h2>
@@ -21,9 +20,9 @@
 					<NcTextField v-if="captions.length > 0"
 						:key="n"
 						:ref="'meme-caption-' + String(n)"
-						v-model="captions[n-1]"
+						v-model="captions[n - 1]"
 						:label="'Caption ' + String(n)"
-						@update:model-value="onCapUpdate()" />
+						@update:modelValue="onCapUpdate()" />
 				</div>
 			</div>
 			<div class="meme-renderer">
@@ -42,7 +41,7 @@
 				<NcButton
 					variant="primary"
 					@click="onSubmit">
-					{{ t('memegen','Use this meme') }}
+					{{ t('memegen', 'Use this meme') }}
 				</NcButton>
 			</div>
 		</div>
@@ -65,12 +64,14 @@ export default {
 		NcLoadingIcon,
 		NcButton,
 	},
+
 	props: {
 		meme: {
 			type: Object,
 			default: null,
 		},
 	},
+
 	data() {
 		return {
 			captions: [],
@@ -79,21 +80,25 @@ export default {
 			timeout: null,
 		}
 	},
+
 	mounted() {
 		if (this.meme !== null) {
 			this.initialize()
 		}
 	},
+
 	methods: {
 		initialize() {
 			this.captions = Array(this.meme.lines).fill('')
 			this.imgUrl = generateUrl('/apps/memegen/memes/{memeId}', { memeId: this.meme.memeId })
 		},
+
 		onCapUpdate() {
 			delay(() => {
 				this.updateCaps()
 			}, 1000)()
 		},
+
 		updateCaps() {
 			this.isLoaded = false
 			let getParams = ''
@@ -116,8 +121,8 @@ export default {
 			newUrl += '?' + getParams
 
 			this.imgUrl = newUrl
-
 		},
+
 		onSubmit() {
 			let externalUrl = 'https://api.memegen.link/images/' + this.meme.memeId
 
@@ -137,9 +142,11 @@ export default {
 
 			this.$emit('submit', externalUrl)
 		},
+
 		onClose() {
 			this.$emit('close')
 		},
+
 		encodeCaption(caption) {
 			// Replace multiple spaces with underscore (_) with 2 underscores (__)
 			caption = caption.replace(/_/g, '__')
@@ -177,6 +184,7 @@ export default {
 	},
 }
 </script>
+
 <style scoped lang="scss">
 
 .meme-caps-modal {

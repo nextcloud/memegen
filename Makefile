@@ -149,6 +149,7 @@ appstore:
 	--exclude="../$(app_name)/.*" \
 	--exclude="../$(app_name)/js/.*" \
 	--exclude="../$(app_name)/webpack.config.js" \
+	--exclude="../$(app_name)/eslint.config.mjs" \
 	--exclude="../$(app_name)/stylelint.config.js" \
 	--exclude="../$(app_name)/CHANGELOG.md" \
 	--exclude="../$(app_name)/README.md" \

@@ -16,10 +16,10 @@
 			<NcTextField
 				ref="memegen-search-input"
 				v-model="searchQuery"
-				:show-trailing-button="searchQuery !== ''"
+				:showTrailingButton="searchQuery !== ''"
 				:label="inputPlaceholder"
-				@trailing-button-click="onClear"
-				@update:model-value="onInput">
+				@trailingButtonClick="onClear"
+				@update:modelValue="onInput">
 				<template #trailing-button-icon>
 					<CloseIcon :size="16" />
 				</template>
@@ -29,7 +29,7 @@
 		<div v-if="memes.length === 0"
 			class="empty-content-wrapper">
 			<NcEmptyContent v-if="searching"
-				:title="t('memegen', 'Searching...')">
+				:title="t('memegen', 'Searching…')">
 				<template #icon>
 					<NcLoadingIcon />
 				</template>
@@ -77,19 +77,16 @@
 </template>
 
 <script>
-import CloseIcon from 'vue-material-design-icons/Close.vue'
-import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
-
-import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
-import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
-import NcTextField from '@nextcloud/vue/components/NcTextField'
-
-import GetCapsDialog from '../components/GetCapsDialog.vue'
-import PickerResult from '../components/PickerResult.vue'
-
 import axios from '@nextcloud/axios'
 import { generateUrl, imagePath } from '@nextcloud/router'
 import InfiniteLoading from 'v3-infinite-loading/lib/v3-infinite-loading.es.js'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
+import CloseIcon from 'vue-material-design-icons/Close.vue'
+import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
+import GetCapsDialog from '../components/GetCapsDialog.vue'
+import PickerResult from '../components/PickerResult.vue'
 import { delay } from '../utils.js'
 
 const LIMIT = 20
@@ -113,6 +110,7 @@ export default {
 			type: String,
 			required: true,
 		},
+
 		accessible: {
 			type: Boolean,
 			default: false,
@@ -140,7 +138,7 @@ export default {
 		this.focusOnInput()
 	},
 
-	beforeDestroy() {
+	beforeUnmount() {
 		this.cancelSearchRequests()
 	},
 
@@ -150,30 +148,34 @@ export default {
 				this.$refs['memegen-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
 		},
+
 		onSelect(meme) {
 			this.cancelSearchRequests()
 			this.selectedMeme = meme
 		},
+
 		onSubmit(extUrl) {
-			this.$el.dispatchEvent(
-				new CustomEvent('submit', {
-					detail: extUrl,
-					bubbles: true,
-				}),
-			)
+			this.$el.dispatchEvent(new CustomEvent('submit', {
+				detail: extUrl,
+				bubbles: true,
+			}))
 		},
+
 		onInput() {
 			delay(() => {
 				this.updateSearch()
 			}, 500)()
 		},
+
 		onClear() {
 			this.searchQuery = ''
 			this.updateSearch()
 		},
+
 		onCapsDialogClose() {
 			this.selectedMeme = null
 		},
+
 		updateSearch() {
 			if (this.$refs.results?.scrollTop) {
 				this.$refs.results.scrollTop = 0
@@ -183,26 +185,29 @@ export default {
 			this.offset = 0
 			this.search()
 		},
+
 		cancelSearchRequests() {
 			if (this.abortController) {
 				this.abortController.abort()
 			}
 		},
+
 		infiniteHandler($state) {
 			this.search($state)
 		},
+
 		search(state = null, limit = LIMIT) {
 			this.abortController = new AbortController()
 			this.searching = true
 			const url = this.offset === null
 				? generateUrl(
-					'apps/memegen/search?term={term}&limit={limit}',
-					{ term: this.searchQuery, limit },
-				)
+						'apps/memegen/search?term={term}&limit={limit}',
+						{ term: this.searchQuery, limit },
+					)
 				: generateUrl(
-					'apps/memegen/search?term={term}&offset={offset}&limit={limit}',
-					{ term: this.searchQuery, offset: this.offset, limit },
-				)
+						'apps/memegen/search?term={term}&offset={offset}&limit={limit}',
+						{ term: this.searchQuery, offset: this.offset, limit },
+					)
 			return axios.get(url, {
 				signal: this.abortController.signal,
 			})

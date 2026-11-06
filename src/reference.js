@@ -11,7 +11,7 @@ import {
 	registerWidget,
 } from '@nextcloud/vue/functions/registerReference'
 
-__webpack_nonce__ = getCSPNonce() // eslint-disable-line
+__webpack_nonce__ = getCSPNonce()
 __webpack_public_path__ = linkTo('memegen', 'js/') // eslint-disable-line
 
 registerWidget('memegen_meme', async (el, { richObjectType, richObject, accessible }) => {

@@ -28,9 +28,8 @@
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
-
 import { imagePath } from '@nextcloud/router'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 
 export default {
 	name: 'MemeReferenceWidget',
@@ -44,10 +43,12 @@ export default {
 			type: String,
 			default: '',
 		},
+
 		richObject: {
 			type: Object,
 			default: null,
 		},
+
 		accessible: {
 			type: Boolean,
 			default: true,
