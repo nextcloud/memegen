@@ -31,7 +31,7 @@ webpackConfig.plugins.push(
 		extensions: ['js', 'vue'],
 		files: 'src',
 		failOnError: !isDev,
-		configType: 'eslintrc',
+		configType: 'flat',
 	}),
 )
 webpackConfig.plugins.push(
