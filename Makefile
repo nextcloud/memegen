@@ -129,6 +129,10 @@ appstore:
 	--exclude-vcs \
 	--exclude="../$(app_name)/build" \
 	--exclude="../$(app_name)/tests" \
+	--exclude="../$(app_name)/playwright" \
+	--exclude="../$(app_name)/playwright.config.ts" \
+	--exclude="../$(app_name)/playwright-report" \
+	--exclude="../$(app_name)/test-results" \
 	--exclude="../$(app_name)/Makefile" \
 	--exclude="../$(app_name)/*.log" \
 	--exclude="../$(app_name)/phpunit*xml" \
