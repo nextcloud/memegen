@@ -94,23 +94,27 @@ function holdBack() {
  * Load the app's reference script, which registers the picker and the widget.
  *
  * Nextcloud loads it on pages that render references, and the test container has no app that does,
- * so the script is added the way Nextcloud adds it.
+ * so the script is added the way Nextcloud adds it, after the app's translations for the language the test asks for.
  *
  * @param page a page of a logged in user
+ * @param language which of the app's translation files to load, none for English
  */
-async function loadReferenceScript(page: Page) {
-	await page.evaluate(async () => {
+async function loadReferenceScript(page: Page, language = 'en') {
+	await page.evaluate(async (language) => {
 		const globals = window as unknown as { OC: { appswebroots: Record<string, string> } }
 		const nonce = document.querySelector<HTMLScriptElement>('script[nonce]')?.nonce ?? ''
-		await new Promise((resolve, reject) => {
-			const script = document.createElement('script')
-			script.src = `${globals.OC.appswebroots.memegen}/js/memegen-reference.js`
-			script.nonce = nonce
-			script.onload = resolve
-			script.onerror = () => reject(new Error('could not load the reference script'))
-			document.head.appendChild(script)
-		})
-	})
+		const files = [...(language === 'en' ? [] : [`l10n/${language}.js`]), 'js/memegen-reference.js']
+		for (const file of files) {
+			await new Promise((resolve, reject) => {
+				const script = document.createElement('script')
+				script.src = `${globals.OC.appswebroots.memegen}/${file}`
+				script.nonce = nonce
+				script.onload = resolve
+				script.onerror = () => reject(new Error(`could not load ${file}`))
+				document.head.appendChild(script)
+			})
+		}
+	}, language)
 	await page.waitForFunction(() => {
 		const globals = window as unknown as { _vue_richtext_custom_picker_elements?: PickerElements, _vue_richtext_widgets?: Widgets }
 		return !!globals._vue_richtext_custom_picker_elements?.memegen_meme && !!globals._vue_richtext_widgets?.memegen_meme
@@ -172,19 +176,27 @@ test.describe('Link previews', () => {
 })
 
 test.describe('Meme picker', () => {
-	test('list the memes of the search', async ({ page }) => {
+	test('say that it is searching, then list the memes', async ({ page }) => {
 		const search = holdBack()
 		await answerSearches(page, memes, search.held)
 		const picker = await mountPicker(page)
 
 		await expect(picker.getByRole('heading', { name: 'Memegen meme picker' })).toBeVisible()
 		await expect(picker.getByLabel('Search memes', { exact: true })).toBeVisible()
+		await expect(picker.getByText('Searching…')).toBeVisible()
 
 		search.release()
 		const results = picker.locator('.result')
 		await expect(results).toHaveCount(memes.length)
 		await expect(picker.getByLabel('Search memes', { exact: true })).toBeFocused()
 		await expect(results.first()).toHaveAttribute('aria-label', 'Doge')
+	})
+
+	test('say when no meme matches', async ({ page }) => {
+		await answerSearches(page, [])
+		const picker = await mountPicker(page)
+
+		await expect(picker.getByText('No results')).toBeVisible()
 	})
 
 	test('show a spinner while a meme loads', async ({ page }) => {
@@ -282,6 +294,20 @@ test.describe('Meme picker', () => {
 		search.release()
 	})
 
+	test('close right after it opened', async ({ page }) => {
+		await answerSearches(page, memes)
+		await loadReferenceScript(page)
+		// open and close in one go, so that no slow round trip lets the picker stay open for 300 ms
+		await page.evaluate(async () => {
+			const globals = window as unknown as { _vue_richtext_custom_picker_elements: PickerElements }
+			const element = document.createElement('div')
+			document.body.appendChild(element)
+			const picker = globals._vue_richtext_custom_picker_elements.memegen_meme
+			picker.onDestroy(element, await picker.callback(element, { providerId: 'memegen_meme', accessible: false }))
+		})
+		// the picker focuses its search field 300 ms after it opened; an uncaught error fails the test
+		await page.waitForTimeout(600)
+	})
 })
 
 test.describe('Reference widget', () => {
@@ -301,9 +327,10 @@ test.describe('Reference widget', () => {
 	 * Render the rich object in the app's reference widget.
 	 *
 	 * @param page a page of a logged in user
+	 * @param language which of the app's translation files to load
 	 */
-	async function renderWidget(page: Page) {
-		await loadReferenceScript(page)
+	async function renderWidget(page: Page, language = 'en') {
+		await loadReferenceScript(page, language)
 		await page.evaluate(async (data) => {
 			const globals = window as unknown as { _vue_richtext_widgets: Widgets }
 			const element = document.createElement('div')
@@ -318,11 +345,12 @@ test.describe('Reference widget', () => {
 		return page.locator('#reference-widget')
 	}
 
-	test('show the meme', async ({ page }) => {
+	test('show the meme with its name', async ({ page }) => {
 		const images = holdBack()
 		await serveImages(page, images.held)
 		const widget = await renderWidget(page)
 
+		await expect(widget.getByText('Doge', { exact: true })).toBeVisible()
 		// a spinner stands in for the meme while it loads
 		await expect(widget.getByRole('img', { name: 'Loading meme template', exact: true })).toBeVisible()
 		// an image that has not loaded yet has no size, so its display tells whether the widget hides it
@@ -332,5 +360,16 @@ test.describe('Reference widget', () => {
 		await expect(widget.getByRole('img', { name: 'Loading meme template', exact: true })).toBeHidden()
 		await expect(widget.locator('img.image')).toHaveAttribute('src', new URL(memePath, page.url()).href)
 		await expect(widget.getByRole('link', { name: 'Powered by Memegen.link' })).toHaveAttribute('href', 'https://memegen.link')
+	})
+
+	test('translate the label of its spinner', async ({ page }) => {
+		const images = holdBack()
+		await serveImages(page, images.held)
+		// the test container forces English, so the app's German translations are loaded the way Nextcloud loads them
+		const widget = await renderWidget(page, 'de')
+
+		await expect(widget.getByRole('img', { name: 'Lade Meme Vorlage', exact: true })).toBeVisible()
+		images.release()
+		await expect(widget.locator('img.image')).toBeVisible()
 	})
 })
