@@ -29,13 +29,13 @@
 		<div v-if="memes.length === 0"
 			class="empty-content-wrapper">
 			<NcEmptyContent v-if="searching"
-				:title="t('memegen', 'Searching…')">
+				:name="t('memegen', 'Searching…')">
 				<template #icon>
 					<NcLoadingIcon />
 				</template>
 			</NcEmptyContent>
 			<NcEmptyContent v-else
-				:title="t('memegen', 'No results')">
+				:name="t('memegen', 'No results')">
 				<template #icon>
 					<img class="empty-content-img"
 						:src="sadGifUrl">
@@ -126,6 +126,7 @@ export default {
 			inputPlaceholder: t('memegen', 'Search memes'),
 			offset: null,
 			abortController: null,
+			focusTimeout: null,
 			poweredByImgSrc: imagePath('memegen', 'memegen.logo.png'),
 			poweredByTitle: t('memegen', 'Powered by Memegen.link'),
 			LIMIT,
@@ -139,12 +140,13 @@ export default {
 	},
 
 	beforeUnmount() {
+		clearTimeout(this.focusTimeout)
 		this.cancelSearchRequests()
 	},
 
 	methods: {
 		focusOnInput() {
-			setTimeout(() => {
+			this.focusTimeout = setTimeout(() => {
 				this.$refs['memegen-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
 		},

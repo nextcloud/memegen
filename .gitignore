@@ -11,3 +11,5 @@ js/*hot-update.*
 /js/
 .php-cs-fixer.cache
 /tests/.phpunit.result.cache
+/test-results/
+/playwright-report/

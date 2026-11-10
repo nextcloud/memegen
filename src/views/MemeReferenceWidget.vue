@@ -5,12 +5,12 @@
 <template>
 	<div class="memegen-meme-reference">
 		<div class="meme-wrapper">
-			<strong v-if="richObject.alt !== null">
-				{{ richObject.alt }}
+			<strong v-if="richObject.name">
+				{{ richObject.name }}
 			</strong>
 			<div v-if="!isLoaded" class="loading-icon">
 				<NcLoadingIcon :size="44"
-					:title="t('memes', 'Loading meme template')" />
+					:title="t('memegen', 'Loading meme template')" />
 			</div>
 			<img v-show="isLoaded"
 				class="image"
