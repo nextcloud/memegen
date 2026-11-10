@@ -13,7 +13,7 @@ OC.L10N.register(
     "Search memes" : "Поиск мемов",
     "Powered by Memegen.link" : "Создано Memegen.link",
     "Memegen meme picker" : "Memegen выбор мемов",
-    "Searching..." : "Поиск...",
+    "Searching…" : "Поиск…",
     "No results" : "Нет результатов",
     "No more memes" : "Больше никаких мемов",
     "Loading meme template" : "Загрузка шаблона мема"

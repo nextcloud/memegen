@@ -13,7 +13,7 @@ OC.L10N.register(
     "Search memes" : "Cuardaigh memes",
     "Powered by Memegen.link" : "Cumhachtaithe ag Memegen.link",
     "Memegen meme picker" : "Memegen roghnóir meme",
-    "Searching..." : "Ag cuardach...",
+    "Searching…" : "Ag cuardach…",
     "No results" : "Gan torthaí",
     "No more memes" : "Uimh memes níos mó",
     "Loading meme template" : "Íoslódáil an teimpléad meme"

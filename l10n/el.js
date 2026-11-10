@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "Αναζήτηση memes",
     "Powered by Memegen.link" : "Με την υποστήριξη του Memegen.link",
     "Memegen meme picker" : "Επιλογέας memes Memegen",
-    "Searching..." : "Γίνεται αναζήτηση...",
     "No results" : "Κανένα αποτέλεσμα",
     "No more memes" : "Δεν υπάρχουν άλλα memes",
     "Loading meme template" : "Φόρτωση προτύπου meme"

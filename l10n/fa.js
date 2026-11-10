@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "جستجوی میم‌ها",
     "Powered by Memegen.link" : "قدرت گرفته از Memegen.link",
     "Memegen meme picker" : "انتخاب‌گر میم Memegen",
-    "Searching..." : "در حال جستجو...",
     "No results" : "نتیجه‌ای یافت نشد",
     "No more memes" : "میم دیگری وجود ندارد",
     "Loading meme template" : "در حال بارگذاری قالب میم"

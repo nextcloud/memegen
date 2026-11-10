@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "Ieškoti memų",
     "Powered by Memegen.link" : "Veikia su Memegen.link",
     "Memegen meme picker" : "„Memegen“ memo rinkiklis",
-    "Searching..." : "Ieškoma...",
     "No results" : "Nieko nerasta",
     "No more memes" : "Daugiau jokių memų",
     "Loading meme template" : "Įkeliamas memo šablonas"

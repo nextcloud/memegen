@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "Cari meme",
     "Powered by Memegen.link" : "Didukung oleh Memegen.link",
     "Memegen meme picker" : "Pemilih meme Memegen",
-    "Searching..." : "Mencari...",
     "No results" : "Tidak ada hasil",
     "No more memes" : "Tidak ada meme lagi",
     "Loading meme template" : "Memuat templat meme"

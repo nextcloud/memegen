@@ -7,7 +7,6 @@ OC.L10N.register(
     "Loading meme" : "Memea kargatzen",
     "Loading memes" : "Memeak kargatzen",
     "Search memes" : "Bilatu memeak",
-    "Searching..." : "Bilatzen...",
     "No results" : "Emaitzarik ez"
 },
 "nplurals=2; plural=(n != 1);");

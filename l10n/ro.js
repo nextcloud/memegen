@@ -13,7 +13,7 @@ OC.L10N.register(
     "Search memes" : "Caută meme-uri",
     "Powered by Memegen.link" : "Realizat cu Memegen.link",
     "Memegen meme picker" : "Selector de meme-uri Memegen",
-    "Searching..." : "Se caută…",
+    "Searching…" : "Se caută…",
     "No results" : "Niciun rezultat",
     "No more memes" : "Nu mai sunt meme-uri",
     "Loading meme template" : "Se încarcă șablonul de meme"

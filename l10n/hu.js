@@ -10,7 +10,6 @@ OC.L10N.register(
     "Loading memes" : "Mémek betöltése",
     "Search memes" : "Mémek keresése",
     "Memegen meme picker" : "Memegen mém választó",
-    "Searching..." : "Keresés...",
     "No results" : "Nincs eredmény",
     "No more memes" : "Nincs több mém",
     "Loading meme template" : "Mém sablon betöltése"

@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "البحث عن تشخيصات memes",
     "Powered by Memegen.link" : "مدعومٌ من Memegen.link",
     "Memegen meme picker" : "لاقط التشخيصات المولدة بواسطة Memegen",
-    "Searching..." : "بحث ...",
     "No results" : "لا نتائج",
     "No more memes" : "لا توجد تشخيصات memes أخرى",
     "Loading meme template" : "تحميل قالب تشخيصة meme"

@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "搜索梗图",
     "Powered by Memegen.link" : "由 Memegen.link 提供技术支持",
     "Memegen meme picker" : "Memegen 梗图选择器",
-    "Searching..." : "搜索中...",
     "No results" : "没有相关结果",
     "No more memes" : "没有更多梗图",
     "Loading meme template" : "梗图模板加载中"

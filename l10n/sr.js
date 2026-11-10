@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "Претрага мемеа",
     "Powered by Memegen.link" : "Омогућио Memegen.link",
     "Memegen meme picker" : "Бирач Memegen мемеа",
-    "Searching..." : "Претражујем...",
     "No results" : "Нема резултата",
     "No more memes" : "Нема више мемеа",
     "Loading meme template" : "Учитава се меме шаблон"

@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "ئىزدەش خاتىرىسى",
     "Powered by Memegen.link" : "Memegen.link تەرىپىدىن ئىشلەنگەن",
     "Memegen meme picker" : "Memegen meme picker",
-    "Searching..." : "ئىزدەش ...",
     "No results" : "ھېچقانداق نەتىجە يوق",
     "No more memes" : "بۇنىڭدىن باشقا ئەسلىمە يوق",
     "Loading meme template" : "Meme قېلىپىنى يۈكلەۋاتىدۇ"

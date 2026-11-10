@@ -13,7 +13,7 @@ OC.L10N.register(
     "Search memes" : "搜尋迷因",
     "Powered by Memegen.link" : "威力本源 Memegen.link",
     "Memegen meme picker" : "Memegen 迷因挑選器",
-    "Searching..." : "正在搜尋……",
+    "Searching…" : "正在搜尋⋯⋯",
     "No results" : "無結果",
     "No more memes" : "無更多迷因",
     "Loading meme template" : "正在載入迷因範本"

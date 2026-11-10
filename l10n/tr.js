@@ -13,7 +13,7 @@ OC.L10N.register(
     "Search memes" : "Komiklik arama",
     "Powered by Memegen.link" : "Memegen.link tarafından sunuluyor",
     "Memegen meme picker" : "Memegen komiklik seçici",
-    "Searching..." : "Aranıyor...",
+    "Searching…" : "Aranıyor…",
     "No results" : "Herhangi bir sonuç bulunamadı",
     "No more memes" : "Başka komiklik yok",
     "Loading meme template" : "Komiklik kalıbı yükleniyor"

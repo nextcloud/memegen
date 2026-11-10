@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "Memlarni qidirish",
     "Powered by Memegen.link" : "Memegen.link tomonidan quvvatlanadi",
     "Memegen meme picker" : "Memegen mem tanlash",
-    "Searching..." : "Izlanmoqda...",
     "No results" : "Natija yo'q",
     "No more memes" : "Boshqa mamlar yo'q",
     "Loading meme template" : "Mem namunalarini yuklash"

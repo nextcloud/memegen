@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "Procurar memes",
     "Powered by Memegen.link" : "Desenvolvido por Memegen.link",
     "Memegen meme picker" : "Seletor de memes do Memegen",
-    "Searching..." : "A procurar...",
     "No results" : "Sem resultados",
     "No more memes" : "Sem mais memes",
     "Loading meme template" : "A carregar modelo meme"

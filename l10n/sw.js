@@ -13,7 +13,6 @@ OC.L10N.register(
     "Search memes" : "Tafuta meme",
     "Powered by Memegen.link" : "Inaendeshwa na Memegen.link",
     "Memegen meme picker" : "Kiteuzi cha meme cha memegen",
-    "Searching..." : "Inatafuta...",
     "No results" : "Hakuna matokeo",
     "No more memes" : "Hakuna meme zaidi",
     "Loading meme template" : "Inapakia kiolezo cha meme"
